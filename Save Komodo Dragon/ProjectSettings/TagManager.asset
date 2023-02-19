@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Weapon
+  - Enemy
+  - PlayerArea
+  - Pickable
+  - Detector
+  - BossBound
   layers:
   - Default
   - TransparentFX

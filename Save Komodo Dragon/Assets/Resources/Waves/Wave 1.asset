@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a04ad5c6304e347b067813098e3772, type: 3}
+  m_Name: Wave 1
+  m_EditorClassIdentifier: 
+  smallPhase:
+    duration: 30
+    period: 3
+    enemyPair:
+    - enemyType: {fileID: 11400000, guid: 6db2bb0074eb6cf459c66a1905d0f4af, type: 2}
+      count: 5
+  massPhase:
+    duration: 60
+    period: 1
+    enemyPair:
+    - enemyType: {fileID: 11400000, guid: f449d4c01b7cc4a489efd0036c2db28b, type: 2}
+      count: 10
+  elitePhase:
+    duration: 60
+    period: 1
+    enemyPair:
+    - enemyType: {fileID: 11400000, guid: f449d4c01b7cc4a489efd0036c2db28b, type: 2}
+      count: 1
+    - enemyType: {fileID: 11400000, guid: 6db2bb0074eb6cf459c66a1905d0f4af, type: 2}
+      count: 5
+  bossPhase:
+    bossType: {fileID: 11400000, guid: b392b1b1fc40bea4da603d0a1c45bd01, type: 2}
+    Bound: {fileID: 2983619297236352167, guid: 55eeffb93ed3cb04986ef5a502b50fc2, type: 3}
