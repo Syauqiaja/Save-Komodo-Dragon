@@ -13,6 +13,7 @@ public class HeroUnitBase : UnitBase
 
     protected Rigidbody2D _r;
     protected float _timeElapsed = 0f;
+    protected SpriteRenderer spriteRenderer;
     [HideInInspector] public Vector3 facingDirection;
     [HideInInspector] public List<Transform> enemyFront = new List<Transform>();
 
@@ -22,6 +23,7 @@ public class HeroUnitBase : UnitBase
 
     protected virtual void Awake() {
         _r = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         facingDirection = transform.right;
     }
     private void Start() {
@@ -51,7 +53,7 @@ public class HeroUnitBase : UnitBase
         Vector2 inputJoystick = Joystick.GetJoystickAxis();
         if(inputJoystick.magnitude > 0.1f) {
             facingDirection = inputJoystick.normalized;
-            transform.localScale = new Vector3(Mathf.Sign(facingDirection.x), 1f, 1f);
+            spriteRenderer.flipX = facingDirection.x > 0?false:true;
         }
         _r.velocity = inputJoystick * BaseStats.travelSpeed;
     }
@@ -60,6 +62,11 @@ public class HeroUnitBase : UnitBase
     {
         base.Damaged(hitValue);
         UpdateHealthBar();
+    }
+    public override void Death()
+    {
+        base.Death();
+        GameManager.Instance.ChangeState(GameState.Lose);
     }
 
     // private void OnCollisionEnter2D(Collision2D other) {

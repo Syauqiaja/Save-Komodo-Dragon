@@ -51,4 +51,9 @@ public class BanaspathiEnemy : EnemyUnitBase
         projectileBase.SetDamage(weaponStats.AttackPower);
         projectileBases.Add(projectileBase);
     }
+    public override void Death()
+    {
+        base.Death();
+        GameManager.Instance.ChangeState(GameState.Win);
+    }
 }   

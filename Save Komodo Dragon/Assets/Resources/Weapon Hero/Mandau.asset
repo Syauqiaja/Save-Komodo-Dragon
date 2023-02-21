@@ -42,4 +42,4 @@ MonoBehaviour:
     launchRadius: 0
     projectileSize: 2
   menuImage: {fileID: 21300000, guid: b178eaa540c86af40ac0b98dfd727e44, type: 3}
-  skillDesc: 
+  skillDesc: Unsheathes the sword in front of the user

@@ -8,6 +8,9 @@ public class SpawnArea : MonoBehaviour
     private void Awake() {
         _t = transform;
     }
+    private void LateUpdate() {
+        _t.position = UnitManager.Instance.heroUnit.transform.position;
+    }
     public List<SpawnAreaPos> spawnAreas = new List<SpawnAreaPos>();
     private void OnDrawGizmos() {
         Gizmos.color = Color.blue;

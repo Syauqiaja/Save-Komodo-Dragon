@@ -10,7 +10,7 @@ public class WaveHandler : MonoBehaviour
     private int currentWave = 1;
     private GameObject bossBound;
 
-    private void Awake() {
+    protected void Awake() {
         spawnArea = GetComponent<SpawnArea>();
     }
     private void Start(){
@@ -97,4 +97,5 @@ public class WaveHandler : MonoBehaviour
         go.SetProperties(phase.bossType.inGameSprite, phase.bossType.hitDamage, phase.bossType.pickableType);
         bossPlace.SetActive(false);
     }
+
 }

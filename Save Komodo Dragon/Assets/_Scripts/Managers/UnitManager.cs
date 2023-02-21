@@ -6,7 +6,6 @@ using Cinemachine;
 public class UnitManager : StaticInstance<UnitManager>
 {
     public CinemachineVirtualCamera virtualCamera;
-    public Transform heroChild;
     public int maxEnemy = 50;
     [HideInInspector] public List<EnemyUnitBase> activeEnemy;
 
@@ -24,10 +23,6 @@ public class UnitManager : StaticInstance<UnitManager>
         //Set properties
         heroUnit.SetStats(heroSelected.BaseStats);
         heroUnit.SetWeapon(heroSelected.WeaponSkill.weaponStats[0]);
-        heroChild.SetParent(heroUnit.transform);
-
-        //Set transform & camera
-        heroChild.localPosition = Vector3.zero;
         virtualCamera.Follow = heroUnit.transform;
 
         //Set menu

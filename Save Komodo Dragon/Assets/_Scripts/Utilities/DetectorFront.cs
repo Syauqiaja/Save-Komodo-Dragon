@@ -11,7 +11,7 @@ public class DetectorFront : MonoBehaviour
         _t = transform;
     }
     private void Update() {
-        transform.right = new Vector3(Mathf.Abs(heroUnit.facingDirection.x), heroUnit.facingDirection.y * heroUnit.transform.localScale.x, heroUnit.facingDirection.z);
+        _t.right = heroUnit.facingDirection;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
