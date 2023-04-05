@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hero Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 29257995ed1e4004c90c579e88abd840, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 7c153922b32d7ec46b561e09945f1d87, type: 3}
+  - {fileID: 21300000, guid: fb07f6a4cfc047f4c9fec381ab25592a, type: 3}
+  - {fileID: 21300000, guid: c2d100b5e3a17214089e0a13b9bd246c, type: 3}
+  - {fileID: 21300000, guid: a32524e56fad0c24ea9e4d142b9615c2, type: 3}
+  - {fileID: 21300000, guid: 239029768e7baf04f9d86b70721f783b, type: 3}
+  - {fileID: 21300000, guid: fab04ea77a3e7354a829872c034bef27, type: 3}
+  - {fileID: 21300000, guid: f3b9da9805008744082133e92de44581, type: 3}
+  - {fileID: 21300000, guid: bf02a5196231f874fbad77f707ca9161, type: 3}
+  - {fileID: 21300000, guid: a2a8a31b553008149a5a4d178b2d6b64, type: 3}
+  - {fileID: 21300000, guid: 78f9d69b6e151aa4290c89650a1e41b1, type: 3}
+  - {fileID: 21300000, guid: 80a9bbdb5cbdaef43bd78876be3fdfc2, type: 3}
+  - {fileID: 21300000, guid: a371a35d2d6d5084da1e6d5f43d83ba8, type: 3}
+  - {fileID: 21300000, guid: a7bd036d51dbb7e449939a8dec25301a, type: 3}
+  - {fileID: 21300000, guid: 527900ced108da14ba7b7eeb51648c5c, type: 3}
+  - {fileID: 21300000, guid: 65a81b3f374dc7c4c9a0a5ede8748d31, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Zakti3
+  - Draco1
+  - Zakti1
+  - Jarada2
+  - Adhisthana3
+  - Draco2
+  - Adhisthana1
+  - Zakti2
+  - Pratidhi3
+  - Pratidhi1
+  - Jarada3
+  - Pratidhi2
+  - Jarada1
+  - Adhisthana2
+  - Draco3
+  m_RenderDataMap: {}
+  m_Tag: Hero Atlas
+  m_IsVariant: 0

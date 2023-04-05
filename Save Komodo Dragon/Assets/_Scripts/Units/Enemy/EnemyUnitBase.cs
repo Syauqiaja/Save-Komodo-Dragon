@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Base of enemy prefabs
 public class EnemyUnitBase : UnitBase
 {
     public int hitDamage {get; private set;}
@@ -20,7 +21,7 @@ public class EnemyUnitBase : UnitBase
     }
     void FixedUpdate(){
         moveDirection = (heroTransform.position - _t.position).normalized;
-        _r.velocity = BaseStats.travelSpeed * moveDirection;
+        _r.AddForce(BaseStats.travelSpeed * moveDirection);
         _t.localScale = new Vector3(Mathf.Sign(moveDirection.x),1,1);
     }
     public void SetProperties(Sprite sprite, int hitDamage, PickableType pickableType){
@@ -30,14 +31,16 @@ public class EnemyUnitBase : UnitBase
     }
     public override void Death()
     {
+        GameManager.Instance.EnemyKilled();
         UnitManager.Instance.SpawnPickable(pickableType, transform.position);
-        UnitManager.Instance.activeEnemy.Remove(this);
+        UnitManager.Instance.activeEnemyDict[enemyType].Remove(this);
         if(UnitManager.Instance.heroUnit.enemyFront.Contains(transform)) UnitManager.Instance.heroUnit.enemyFront.Remove(transform);
         base.Death();
     }
-    public override void Damaged(int hitValue)
+    public override void Damaged(float hitValue)
     {
-        UnitManager.Instance.SpawnTextDamage(hitValue, _t.position);
+        UnitManager.Instance.SpawnTextDamage((int) hitValue, _t.position);
         base.Damaged(hitValue);
+        _r.AddForce(-moveDirection, ForceMode2D.Impulse);
     }
 }

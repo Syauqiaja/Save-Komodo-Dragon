@@ -15,7 +15,7 @@ MonoBehaviour:
   unitType: 1
   _stats:
     health: 1000
-    travelSpeed: 0.3
+    travelSpeed: 1
   description: 
   menuSprite: {fileID: 21300000, guid: 68192d1167a1c314c8065b27652d37f1, type: 3}
   enemyType: 4

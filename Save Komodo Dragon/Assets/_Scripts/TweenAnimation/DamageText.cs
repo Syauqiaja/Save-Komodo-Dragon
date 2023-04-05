@@ -17,9 +17,11 @@ public class DamageText : MonoBehaviour
     }
     private void OnEnable() {
         textMesh.color = startColor;
-        LeanTween.moveY(gameObject, _t.position.y + 0.1f, 0.3f).setEaseInSine().setOnComplete(()=>{
+        LeanTween.value(gameObject, 1f, 4f, 0.2f).setEaseOutSine().setOnUpdate((float value)=>{
+            textMesh.fontSize = value;
+        }).setOnComplete(()=>{
             gameObject.SetActive(false);
-        });
+        }).setLoopPingPong(1);
     }
 }
 

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Equipment Icons
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0ffcd89392176bc4885a3cbf771cc7c7, type: 3}
+    - {fileID: 2800000, guid: 27348c40585f2424fb513f1ae7b30e50, type: 3}
+    - {fileID: 2800000, guid: 2c5730dcac45a5c4488a5110ef07c0e0, type: 3}
+    - {fileID: 2800000, guid: c723f9c6443a92043b454962bea38a16, type: 3}
+    - {fileID: 2800000, guid: 4ffa019dd0d8f2c4ab6214b02183e64e, type: 3}
+    - {fileID: 2800000, guid: 1ef746d4f9d189544a19376034ebcd10, type: 3}
+    - {fileID: 2800000, guid: e5142d04c2542b54d9965ec8ff71aec0, type: 3}
+    - {fileID: 2800000, guid: 98cb9b1a53a37bc4cae297f47356c40d, type: 3}
+    - {fileID: 2800000, guid: 4f9158c4d9d65db428ec89448a41f1a6, type: 3}
+    - {fileID: 2800000, guid: a4f4de8c0b6cc6346a8021ed53553da7, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 27348c40585f2424fb513f1ae7b30e50, type: 3}
+  - {fileID: 21300000, guid: 0ffcd89392176bc4885a3cbf771cc7c7, type: 3}
+  - {fileID: 21300000, guid: e5142d04c2542b54d9965ec8ff71aec0, type: 3}
+  - {fileID: 21300000, guid: 4f9158c4d9d65db428ec89448a41f1a6, type: 3}
+  - {fileID: 21300000, guid: 1ef746d4f9d189544a19376034ebcd10, type: 3}
+  - {fileID: 21300000, guid: c723f9c6443a92043b454962bea38a16, type: 3}
+  - {fileID: 21300000, guid: 98cb9b1a53a37bc4cae297f47356c40d, type: 3}
+  - {fileID: 21300000, guid: a4f4de8c0b6cc6346a8021ed53553da7, type: 3}
+  - {fileID: 21300000, guid: 2c5730dcac45a5c4488a5110ef07c0e0, type: 3}
+  - {fileID: 21300000, guid: 4ffa019dd0d8f2c4ab6214b02183e64e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Barong
+  - Asmat Shield
+  - King Baba
+  - Tiilangga Hat
+  - Kotang Antakusuma
+  - King Baba armor
+  - Rote Tribe
+  - Tassel Skirt
+  - Caping Basunanda
+  - Kain Poleng
+  m_RenderDataMap: {}
+  m_Tag: Equipment Icons
+  m_IsVariant: 0

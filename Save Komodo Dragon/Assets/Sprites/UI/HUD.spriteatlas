@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HUD
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 0cafc8b9649a9374aaa431be35972954, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: cb06ea54503c0b042993c13a3976915a, type: 3}
+  - {fileID: 21300000, guid: 3fc4c6250887b7f429511c833dfd338c, type: 3}
+  - {fileID: 21300000, guid: 421d1f06ea97c0b4abba566012b97cb1, type: 3}
+  - {fileID: 21300000, guid: a4b48f1874a72254899a3d9ede2f19f5, type: 3}
+  - {fileID: 21300000, guid: 9b614eaa2d7e5b244b1e7830c1bc8654, type: 3}
+  - {fileID: 21300000, guid: e2529c3ccfe6b1f4ead2b1adf48c083a, type: 3}
+  - {fileID: 21300000, guid: 8cfaaafc6065ff245bdd27d5afbb4d3a, type: 3}
+  - {fileID: 21300000, guid: 1e844f4e0b13ff043bbfa56a72eb437a, type: 3}
+  - {fileID: 21300000, guid: 9d8166bfdf2773d44a1823cebc21c476, type: 3}
+  - {fileID: 21300000, guid: f796caef2a46d6142934a10d21e37dc9, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Rectangle 3 copy 2
+  - Star b
+  - Star a
+  - Layer 3
+  - Layer 4
+  - Rectangle 1
+  - Coin
+  - skull
+  - Layer 5 copy
+  - Layer 5
+  m_RenderDataMap: {}
+  m_Tag: HUD
+  m_IsVariant: 0

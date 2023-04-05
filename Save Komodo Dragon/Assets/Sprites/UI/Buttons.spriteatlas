@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Buttons
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: e8b3e09bb42e89e4dbb043e4cecfc498, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0ab2c3c1a6556084da3122bd74e1613d, type: 3}
+  - {fileID: 21300000, guid: 1ff2692271de31740aba8af0b40ee78b, type: 3}
+  - {fileID: 21300000, guid: 7682b38253e79db459c1b3832a3ab997, type: 3}
+  - {fileID: 21300000, guid: 58d701e21c45403468cb2ef5de1f9d2d, type: 3}
+  - {fileID: 21300000, guid: bbde1e66293145d48b9c6b465c06e036, type: 3}
+  - {fileID: 21300000, guid: 869104280e110e54f91b2708acfdb356, type: 3}
+  - {fileID: 21300000, guid: d9ace789bd4a5264aa563dcf38bb7241, type: 3}
+  - {fileID: 21300000, guid: ebaf0e0a1c7a6d9419fe9b5b8689f9e1, type: 3}
+  - {fileID: 21300000, guid: 94b6b44dce7f06b4ea260f67f2a9e2c9, type: 3}
+  - {fileID: 21300000, guid: f43d080e621365f41948290a72f45e4f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Button Vibaration off
+  - Button Home
+  - Button Vibaration onn
+  - btn_alert
+  - btn_default
+  - btn_success
+  - Button Pause
+  - Button Mute
+  - Button Back
+  - Button Unmute
+  m_RenderDataMap: {}
+  m_Tag: Buttons
+  m_IsVariant: 0

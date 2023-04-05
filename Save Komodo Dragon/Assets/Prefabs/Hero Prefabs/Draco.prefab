@@ -86,7 +86,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1962908029019393079}
   - component: {fileID: 941878593216019402}
-  - component: {fileID: 2741900160423974499}
+  - component: {fileID: 2189889437982620585}
   - component: {fileID: 1337635724278708398}
   m_Layer: 0
   m_Name: Front Detector
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7408c016e3ee39941bdb921be44c3af2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!61 &2741900160423974499
+--- !u!61 &2189889437982620585
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.8055305, y: 0}
+  m_Offset: {x: 1.9956701, y: 0.062332213}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -146,7 +146,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4265928, y: 1}
+  m_Size: {x: 2.2213411, y: 2.4340124}
   m_EdgeRadius: 0
 --- !u!61 &1337635724278708398
 BoxCollider2D:
@@ -161,7 +161,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.9727091, y: 0.066871285}
+  m_Offset: {x: 0.53834605, y: 0.066871285}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -172,7 +172,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0476534, y: 2.9169824}
+  m_Size: {x: 0.74434483, y: 1.8900001}
   m_EdgeRadius: 0
 --- !u!1 &5600981607814330173
 GameObject:
@@ -612,7 +612,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b178eaa540c86af40ac0b98dfd727e44, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb07f6a4cfc047f4c9fec381ab25592a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -639,6 +639,7 @@ MonoBehaviour:
     health: 0
     travelSpeed: 0
   currentHealth: 0
+  maxHealth: 0
   healthBar: {fileID: 8488128753415825259}
   healthGradient:
     serializedVersion: 2

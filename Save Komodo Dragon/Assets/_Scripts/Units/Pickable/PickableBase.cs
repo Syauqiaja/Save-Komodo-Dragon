@@ -14,7 +14,7 @@ public class PickableBase : MonoBehaviour
     private void Picking(Transform target){
         LeanTween.value(gameObject, 0f,0.5f, 0.5f).setOnUpdate((float value)=>{
             transform.position = Vector3.Lerp(transform.position, target.position, value);
-        }).setEaseInCubic().setOnComplete(Picked);
+        }).setEaseInBack().setOnComplete(Picked);
     }
 
     protected virtual void Picked(){
@@ -24,4 +24,10 @@ public class PickableBase : MonoBehaviour
 public enum PickableType{
     smallDiamond,
     bigDiamond,
+    blueDiamond,
+    goldDiamond,
+    Food,
+    Magnet,
+    Coin,
+    Chest,
 }

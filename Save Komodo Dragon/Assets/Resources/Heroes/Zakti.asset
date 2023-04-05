@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5c23fd834c21743bf7677711b06d5e, type: 3}
+  m_Name: Zakti
+  m_EditorClassIdentifier: 
+  unitType: 0
+  _stats:
+    health: 1000
+    travelSpeed: 2
+  description: 
+  menuSprite: {fileID: 21300000, guid: 7c153922b32d7ec46b561e09945f1d87, type: 3}
+  heroType: 3
+  Prefab: {fileID: 6682583353972452465, guid: 7021d57985db9d247b08b41255f3ec51, type: 3}
+  heroPrice: 300
+  heroSprites:
+  - {fileID: 21300000, guid: c2d100b5e3a17214089e0a13b9bd246c, type: 3}
+  - {fileID: 21300000, guid: bf02a5196231f874fbad77f707ca9161, type: 3}
+  - {fileID: 21300000, guid: 7c153922b32d7ec46b561e09945f1d87, type: 3}
+  WeaponSkill: {fileID: 11400000, guid: c537b22c0574baf4cbbe353a6b4e3b73, type: 2}

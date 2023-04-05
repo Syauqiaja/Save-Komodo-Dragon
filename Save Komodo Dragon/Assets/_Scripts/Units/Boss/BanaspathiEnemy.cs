@@ -40,13 +40,13 @@ public class BanaspathiEnemy : EnemyUnitBase
 
         if(_timeElapsed < Time.time){
             _timeElapsed = Time.time + 1/weaponStats.FiringRate;
-            projectileBases[0].Launch((heroTransform.position - projectileBases[0].transform.position)*weaponStats.ProjectileSpeed);
+            projectileBases[0].Launch((heroTransform.position - projectileBases[0].transform.position)*weaponStats.speed);
             projectileBases.RemoveAt(0);
             AddProjectile();
         }
     }
     void AddProjectile(){
-        ProjectileBase projectileBase = ObjectPooler.Instance.GetProjectile(WeaponType.BanaspathiOrb);
+        ProjectileBase projectileBase = ObjectPooler.Instance.GetProjectile(SkillType.BanaspathiOrb);
         projectileBase.gameObject.SetActive(true);
         projectileBase.SetDamage(weaponStats.AttackPower);
         projectileBases.Add(projectileBase);
@@ -54,6 +54,8 @@ public class BanaspathiEnemy : EnemyUnitBase
     public override void Death()
     {
         base.Death();
-        GameManager.Instance.ChangeState(GameState.Win);
+        GameManager.Instance.ChangeState(GameState.WaveChange);
     }
+
+    
 }   

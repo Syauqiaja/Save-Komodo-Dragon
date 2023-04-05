@@ -4,4 +4,9 @@ using UnityEngine;
 
 public class Coin : PickableBase
 {
+    protected override void Picked()
+    {
+        base.Picked();
+        GameManager.Instance.GoldPicked(100);
+    }
 }

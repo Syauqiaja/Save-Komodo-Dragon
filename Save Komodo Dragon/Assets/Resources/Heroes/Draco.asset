@@ -14,10 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitType: 0
   _stats:
-    health: 200
+    health: 1000
     travelSpeed: 2
   description: 
-  menuSprite: {fileID: 21300000, guid: b178eaa540c86af40ac0b98dfd727e44, type: 3}
-  HeroType: 0
+  menuSprite: {fileID: 21300000, guid: 65a81b3f374dc7c4c9a0a5ede8748d31, type: 3}
+  heroType: 0
   Prefab: {fileID: 6682583353972452465, guid: 7021d57985db9d247b08b41255f3ec51, type: 3}
+  heroPrice: 300
+  heroSprites:
+  - {fileID: 21300000, guid: fb07f6a4cfc047f4c9fec381ab25592a, type: 3}
+  - {fileID: 21300000, guid: fab04ea77a3e7354a829872c034bef27, type: 3}
+  - {fileID: 21300000, guid: 65a81b3f374dc7c4c9a0a5ede8748d31, type: 3}
   WeaponSkill: {fileID: 11400000, guid: 4a5439074dec1cd4b89f77e4bf992ca1, type: 2}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ec8b4d48b005442bab4bb2a2949cff, type: 3}
+  m_Name: King Baba
+  m_EditorClassIdentifier: 
+  menuName: KIng Baba
+  menuImage: {fileID: 21300000, guid: e5142d04c2542b54d9965ec8ff71aec0, type: 3}
+  menuDesc:
+  - Restore HP 3% per 5s
+  - Restore HP 5% per 5s
+  - Restore HP 10% per 5s
+  - Restore HP 12% per 5s
+  - Restore HP 15% per 5s
+  equipmentType: 1
+  clothType: 0
+  upgradeValues:
+  - 0.03
+  - 0.05
+  - 0.1
+  - 0.12
+  - 0.15

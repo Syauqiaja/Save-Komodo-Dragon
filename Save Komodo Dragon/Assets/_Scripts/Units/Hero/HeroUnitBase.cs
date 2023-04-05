@@ -16,9 +16,6 @@ public class HeroUnitBase : UnitBase
     protected SpriteRenderer spriteRenderer;
     [HideInInspector] public Vector3 facingDirection;
     [HideInInspector] public List<Transform> enemyFront = new List<Transform>();
-
-    // Enemy hit detector
-    private EnemyUnitBase enemiesTouched = null;
     
 
     protected virtual void Awake() {
@@ -26,28 +23,16 @@ public class HeroUnitBase : UnitBase
         spriteRenderer = GetComponent<SpriteRenderer>();
         facingDirection = transform.right;
     }
-    private void Start() {
-        GameManager.OnBeforeStateChanged += BeforeState;
-    }
-    public void BeforeState(GameState gameState){
-        // if(gameState == GameState.LevelUp){
-        //     LevelUp();
-        // }else if(gameState == GameState.Starting){
-        //     Starting();
-        // }
-    }
     private void Update() {
         MoveUnit();
-        if(_timeElapsed < Time.time){
-            _timeElapsed = Time.time + 1f/Weapon.FiringRate;
-            Attack(transform.position, facingDirection);
-        }
     }
     public void UpdateHealthBar(){
-        healthBar.fillAmount = (float) currentHealth / BaseStats.health;
+        maxHealth = Mathf.FloorToInt(BaseStats.health * ClothHandler.Instance.maxHealthMultiplier);
+        healthBar.fillAmount = (float) currentHealth / maxHealth;
         healthBar.color = healthGradient.Evaluate(healthBar.fillAmount);
     }
-    protected virtual void Attack(Vector3 CenterPos, Vector3 direction){
+    public void SetSprite(Sprite sprite){
+        spriteRenderer.sprite = sprite;
     }
     protected virtual void MoveUnit(){
         Vector2 inputJoystick = Joystick.GetJoystickAxis();
@@ -55,12 +40,23 @@ public class HeroUnitBase : UnitBase
             facingDirection = inputJoystick.normalized;
             spriteRenderer.flipX = facingDirection.x > 0?false:true;
         }
-        _r.velocity = inputJoystick * BaseStats.travelSpeed;
+        _r.velocity = inputJoystick * BaseStats.travelSpeed * ClothHandler.Instance.speedMultiplier;
     }
 
-    public override void Damaged(int hitValue)
-    {
+    public override void Damaged(float hitValue)
+    {   
+        // Damaging every 0.2s
+        // base.Damaged(Mathf.CeilToInt(hitValue * ClothHandler.Instance.damageReduce) * Time.deltaTime * 10f);
+
         base.Damaged(hitValue);
+        UpdateHealthBar();
+    }
+    public void Heal(int healAmount){
+        currentHealth += healAmount;
+        UpdateHealthBar();
+    }
+    public void Heal(float healAmount){
+        currentHealth += Mathf.FloorToInt(healAmount * maxHealth);
         UpdateHealthBar();
     }
     public override void Death()
@@ -76,5 +72,4 @@ public class HeroUnitBase : UnitBase
     //         Death();
     //     }
     // }
-
 }

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1117c678ff2853c4baa245cf38e5bd80, type: 3}
+  m_Name: 8_Gunung Api Ijen
+  m_EditorClassIdentifier: 
+  waves: []
+  mapImage: {fileID: 21300000, guid: ccfe7bf25d3fa8d46924a643a281fd37, type: 3}
+  frameColor: {r: 0.14509805, g: 0.8352942, b: 0.8000001, a: 1}
+  mapName: Gunung Api Ijen
+  mapNumber: 8

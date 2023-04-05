@@ -12,39 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0720e3462c89adf43945c49732f4eab4, type: 3}
   m_Name: Zakti Claw
   m_EditorClassIdentifier: 
-  skillName: Zakti Claw
+  menuName: ZaktiClaw
+  menuImage: {fileID: 21300000, guid: 5f51d1fa5c5028c449175a901be4852d, type: 3}
+  menuDesc:
+  - Clawed at the enemy in front of the user
+  - Clawed at the enemy in front of the user
+  - Clawed at the enemy in front of the user
+  - Clawed at the enemy in front of the user
+  - Clawed at the enemy in front of the user
+  - Clawed at the enemy in front of the user
+  equipmentType: 0
   skillType: 3
   prefab: {fileID: 7594539594461774776, guid: 7c584aa2ec838b549b4bed9441235f46, type: 3}
   weaponStats:
-  - AttackPower: 5
+  - AttackPower: 200
     FiringRate: 1
-    ProjectileSpeed: 0
+    speed: 0
     launchRadius: 0
-    projectileSize: 1
-  - AttackPower: 5
+    duration: 0
+    size: 1
+  - AttackPower: 200
     FiringRate: 1.5
-    ProjectileSpeed: 0
+    speed: 0
     launchRadius: 0
-    projectileSize: 1
-  - AttackPower: 5
+    duration: 0
+    size: 1
+  - AttackPower: 200
     FiringRate: 1.5
-    ProjectileSpeed: 0
+    speed: 0
     launchRadius: 0
-    projectileSize: 2
-  - AttackPower: 10
+    duration: 0
+    size: 2
+  - AttackPower: 300
     FiringRate: 1.5
-    ProjectileSpeed: 0
+    speed: 0
     launchRadius: 0
-    projectileSize: 2
-  - AttackPower: 10
+    duration: 0
+    size: 2
+  - AttackPower: 300
     FiringRate: 2
-    ProjectileSpeed: 0
+    speed: 0
     launchRadius: 0
-    projectileSize: 2
-  - AttackPower: 15
+    duration: 0
+    size: 2
+  - AttackPower: 400
     FiringRate: 2
-    ProjectileSpeed: 0
+    speed: 0
     launchRadius: 0
-    projectileSize: 2
-  menuImage: {fileID: 21300000, guid: 5f51d1fa5c5028c449175a901be4852d, type: 3}
-  skillDesc: Clawed at the enemy in front of the user
+    duration: 0
+    size: 2

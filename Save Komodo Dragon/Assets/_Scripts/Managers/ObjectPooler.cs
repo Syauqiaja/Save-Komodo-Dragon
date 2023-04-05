@@ -30,16 +30,16 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
             }
         }
     }
-    public ProjectileBase GetProjectile(WeaponType type){
+    public ProjectileBase GetProjectile(SkillType type){
         foreach (ProjectileBase projectile in projectileBases)
         {
-            if(projectile.weaponType == type && !projectile.gameObject.activeInHierarchy){
+            if(projectile.skillType == type && !projectile.gameObject.activeInHierarchy){
                 return projectile;
             }
         }
         foreach (ObjectToPool item in objectToPools)
         {
-            if(item.poolType == PoolType.Projectile && item.prefab.GetComponent<ProjectileBase>().weaponType == type){
+            if(item.poolType == PoolType.Projectile && item.prefab.GetComponent<ProjectileBase>().skillType == type){
                 GameObject go = Instantiate(item.prefab);
                 go.SetActive(false);
                 ProjectileBase pb = go.GetComponent<ProjectileBase>();
@@ -48,6 +48,20 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
             }
         }
         return null;
+    }
+    public ProjectileBase GetOrSetProjectile(ProjectileBase projectileBase){
+        foreach (ProjectileBase projectile in projectileBases)
+        {
+            if(projectile.skillType == projectileBase.skillType && !projectile.gameObject.activeInHierarchy){
+                return projectile;
+            }
+        }
+        
+        ProjectileBase go = Instantiate(projectileBase);
+        go.gameObject.SetActive(false);
+        projectileBases.Add(go);
+        Debug.Log("Get or set returning : "+go.name);
+        return go;
     }
     public EnemyUnitBase GetEnemy(EnemyType type){
         foreach (EnemyUnitBase enemy in enemyUnitBases)

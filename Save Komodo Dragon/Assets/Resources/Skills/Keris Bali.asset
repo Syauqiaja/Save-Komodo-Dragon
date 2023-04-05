@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0720e3462c89adf43945c49732f4eab4, type: 3}
+  m_Name: Keris Bali
+  m_EditorClassIdentifier: 
+  menuName: Keris Bali
+  menuImage: {fileID: 21300000, guid: 0e71f7d21aaa9b64488a3bdd0d634450, type: 3}
+  menuDesc:
+  - 'Keris will spin around the user. Starting keris: 2'
+  - Add 1 keris
+  - Add 1 keris
+  - Add 1 keris
+  - Increase Damage
+  equipmentType: 0
+  skillType: 5
+  prefab: {fileID: 4465728754675909787, guid: 7cfca9de97114634f9337a51572ff057, type: 3}
+  weaponStats:
+  - AttackPower: 20
+    FiringRate: 0
+    speed: 5
+    launchRadius: 0
+    duration: 5
+    size: 2
+  - AttackPower: 20
+    FiringRate: 0
+    speed: 5
+    launchRadius: 0
+    duration: 5
+    size: 3
+  - AttackPower: 20
+    FiringRate: 0
+    speed: 5
+    launchRadius: 0
+    duration: 5
+    size: 4
+  - AttackPower: 20
+    FiringRate: 0
+    speed: 5
+    launchRadius: 0
+    duration: 5
+    size: 5
+  - AttackPower: 40
+    FiringRate: 0
+    speed: 8
+    launchRadius: 0
+    duration: 5
+    size: 5

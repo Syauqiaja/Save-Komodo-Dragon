@@ -3,23 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Unit/Skill", fileName ="New Skill")]
-public class ScriptableSkill : ScriptableObject
+public class ScriptableSkill : ScriptableEquipment
 {
-    public string skillName;
+    [Header("Skill Part")]
     public SkillType skillType;
+
     public SkillBase prefab;
     public List<WeaponStats> weaponStats;
-
-    [Header("Menu Item")]
-    public Sprite menuImage;
-    public string skillDesc;
 }
 
 [System.Serializable]
 public enum SkillType{
-    HeroBaseSkill,
-    AdhistanaBow=0,
+    WuhuAmet=0,
     GatotKacaArmor=1,
     KujangStab=2,
     ZaktiClaw=3,
+    DracoSword=4,
+    KerisBali=5,
+    BanaspathiOrb = 6,
 }

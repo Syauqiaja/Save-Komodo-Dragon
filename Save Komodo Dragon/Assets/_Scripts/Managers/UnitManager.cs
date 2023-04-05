@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Threading.Tasks;
 using Cinemachine;
 
 public class UnitManager : StaticInstance<UnitManager>
 {
+    public DataOverScene dataHolder;
     public CinemachineVirtualCamera virtualCamera;
-    public int maxEnemy = 50;
-    [HideInInspector] public List<EnemyUnitBase> activeEnemy;
+    [HideInInspector] public Dictionary<EnemyType,List<EnemyUnitBase>> activeEnemyDict = new Dictionary<EnemyType, List<EnemyUnitBase>>();
 
     [Header("Diamon Spreader")]
     public int startingDiamondCount = 100;
@@ -16,17 +17,18 @@ public class UnitManager : StaticInstance<UnitManager>
     public float diamondSpreadRadius = 20f;
     [HideInInspector] public HeroUnitBase heroUnit;
 
-    public void SpawnHero(HeroType t){
-        ScriptableHero heroSelected = ResourceSystem.Instance.GetHero(HeroType.Draco);
+    public void SpawnHero(){
+        ScriptableHero heroSelected = dataHolder.GetSelectedHero();
+
+        Debug.Log(heroSelected.name);
         heroUnit = Instantiate(heroSelected.Prefab, Vector3.zero, Quaternion.identity);
 
         //Set properties
         heroUnit.SetStats(heroSelected.BaseStats);
-        heroUnit.SetWeapon(heroSelected.WeaponSkill.weaponStats[0]);
+        heroUnit.SetSprite(heroSelected.heroSprites[0]);
         virtualCamera.Follow = heroUnit.transform;
 
-        //Set menu
-        ResourceSystem.Instance.AddHeroSkill(heroSelected.WeaponSkill);
+        GameManager.Instance.AddEquipment(dataHolder.SelectedSkill);
     }
     public void AddNewSkill(SkillType skillType){
         ScriptableSkill scriptableSkill = ResourceSystem.Instance.GetSkill(skillType);
@@ -35,10 +37,14 @@ public class UnitManager : StaticInstance<UnitManager>
         skillBase.heroUnit = heroUnit;
         skillBase.transform.SetParent(heroUnit.transform);
     }
-    public void SpawnEnemy(ScriptableEnemy scriptableEnemy, Vector3 position){
-        if(activeEnemy.Count >= maxEnemy) return;
+    public void TrySpawnEnemy(ScriptableEnemy scriptableEnemy, Vector3 position, int maxCount){
+        if(!activeEnemyDict.ContainsKey(scriptableEnemy.enemyType))
+            activeEnemyDict.Add(scriptableEnemy.enemyType, new List<EnemyUnitBase>());
+
+        if(activeEnemyDict[scriptableEnemy.enemyType].Count >= maxCount) return;
+
         EnemyUnitBase enemyUnit = ObjectPooler.Instance.GetEnemy(scriptableEnemy.enemyType);
-        activeEnemy.Add(enemyUnit);
+        activeEnemyDict[scriptableEnemy.enemyType].Add(enemyUnit);
         enemyUnit.gameObject.SetActive(true);
         enemyUnit.SetStats(scriptableEnemy.BaseStats);
         enemyUnit.SetProperties(scriptableEnemy.inGameSprite, scriptableEnemy.hitDamage, scriptableEnemy.pickableType);
@@ -63,10 +69,15 @@ public class UnitManager : StaticInstance<UnitManager>
         damageText.textMesh.text = damage.ToString();
         damageText._t.position = pos;
     }
-    public void KillAllEnemy(){
-        while(activeEnemy.Count > 0){
-            activeEnemy[0].Death();
-        }
+    public async void KillAllEnemy(){
+        await Task.Run(()=>{
+            foreach (EnemyType enemyType in activeEnemyDict.Keys)
+            { 
+                while(activeEnemyDict[enemyType].Count > 0){
+                    activeEnemyDict[enemyType][0].Death();
+                }
+            }
+        });
     }
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;

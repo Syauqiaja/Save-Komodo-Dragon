@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
-    public WeaponType weaponType;
+    public SkillType skillType;
     public float lifeTime = 1;
-    protected int hitDamage;
+    protected int hitDamage=0;
 
     public void SetDamage(int value) {hitDamage = value;}
 

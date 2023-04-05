@@ -2,19 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// Base config of unit
+// Base config of any unit (Hero & Enemy)
 public class UnitBase : MonoBehaviour
 {
     public Stats BaseStats ;
-    public int currentHealth;
+    [HideInInspector] public float currentHealth;
+    [HideInInspector] public float maxHealth;
     public void SetStats(Stats stats) {
         BaseStats = stats;
-        ResetHealth();
+        maxHealth = BaseStats.health;
+        currentHealth = maxHealth;
     }
-    public void ResetHealth(){
-        currentHealth = BaseStats.health;
-    }
-    public virtual void Damaged(int hitValue){
+    public virtual void Damaged(float hitValue){
         currentHealth -= hitValue;
         if(currentHealth <= 0) Death();
     }

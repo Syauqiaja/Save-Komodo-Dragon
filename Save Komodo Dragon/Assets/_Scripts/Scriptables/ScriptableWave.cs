@@ -5,18 +5,26 @@ using UnityEngine;
 [CreateAssetMenu]
 public class ScriptableWave : ScriptableObject
 {
-    public Phase smallPhase, massPhase, elitePhase;
+    public List<Phase> phases;
     public BossPhase bossPhase;
+
+    public Phase GetPhase(int phaseIndex){
+        if(phaseIndex < phases.Count) return phases[phaseIndex];
+        else return new Phase();
+    }
 }
 [System.Serializable]
 public struct EnemyPair{
-    public ScriptableEnemy enemyType;
-    public int count;
+    public ScriptableEnemy enemyData;
+    public int countMax;
+    public bool spawnOnce;
 }
 [System.Serializable]
 public struct Phase{
+    public float delay;
     public int duration;
-    public int period;
+    public float rate;
+    public GameState state;
     public List<EnemyPair> enemyPair;
 }
 

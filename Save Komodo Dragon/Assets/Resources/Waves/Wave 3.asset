@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a04ad5c6304e347b067813098e3772, type: 3}
+  m_Name: Wave 3
+  m_EditorClassIdentifier: 
+  phases:
+  - delay: 0
+    duration: 60
+    rate: 0.7
+    state: 1
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: 2f4741b8532bc6d408c7dc84d0248f22, type: 2}
+      countMax: 70
+      spawnOnce: 0
+  - delay: 0
+    duration: 60
+    rate: 0.2
+    state: 2
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: 2f4741b8532bc6d408c7dc84d0248f22, type: 2}
+      countMax: 70
+      spawnOnce: 0
+    - enemyData: {fileID: 11400000, guid: bb22474d0c3d6294c96390bbce7b6647, type: 2}
+      countMax: 80
+      spawnOnce: 0
+  - delay: 0
+    duration: 60
+    rate: 0.7
+    state: 3
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: b6870a321d9a411408e67bfea5c2a24b, type: 2}
+      countMax: 50
+      spawnOnce: 0
+    - enemyData: {fileID: 11400000, guid: d5f950937e067e64589226c03cf49402, type: 2}
+      countMax: 1
+      spawnOnce: 1
+  - delay: 0
+    duration: 60
+    rate: 0.7
+    state: 2
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: 2f4741b8532bc6d408c7dc84d0248f22, type: 2}
+      countMax: 100
+      spawnOnce: 0
+    - enemyData: {fileID: 11400000, guid: b6870a321d9a411408e67bfea5c2a24b, type: 2}
+      countMax: 120
+      spawnOnce: 0
+  - delay: 0
+    duration: 60
+    rate: 0.7
+    state: 3
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: 2f4741b8532bc6d408c7dc84d0248f22, type: 2}
+      countMax: 100
+      spawnOnce: 0
+    - enemyData: {fileID: 11400000, guid: db2321a58d3a411469f5a2a256ed1069, type: 2}
+      countMax: 1
+      spawnOnce: 1
+  - delay: 0
+    duration: 60
+    rate: 0.7
+    state: 1
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: b6870a321d9a411408e67bfea5c2a24b, type: 2}
+      countMax: 150
+      spawnOnce: 0
+  bossPhase:
+    bossType: {fileID: 11400000, guid: b392b1b1fc40bea4da603d0a1c45bd01, type: 2}
+    Bound: {fileID: 2983619297236352167, guid: 55eeffb93ed3cb04986ef5a502b50fc2, type: 3}

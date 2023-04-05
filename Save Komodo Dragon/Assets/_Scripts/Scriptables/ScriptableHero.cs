@@ -7,8 +7,10 @@ using UnityEngine;
 /// </summary>
 [CreateAssetMenu(menuName = "Unit/Hero" ,fileName ="Heroes")]
 public class ScriptableHero : ScriptableUnit{
-    public HeroType HeroType;
+    public HeroType heroType;
     public HeroUnitBase Prefab;
+    public int heroPrice;
+    public List<Sprite> heroSprites;
 
     [Header("Weapon Skill")]
     public ScriptableSkill WeaponSkill;
@@ -17,16 +19,19 @@ public class ScriptableHero : ScriptableUnit{
 [Serializable]
 public enum HeroType {
     Draco = 0,
-    Snorlax = 1
+    Pratidhi = 1,
+    Adhistana = 2,
+    Zakti = 3,
+    Jarada = 4,
 }
 [Serializable]
 public struct WeaponStats{
     public int AttackPower;
     public float FiringRate;
-    public float ProjectileSpeed;
+    public float speed;
     public float launchRadius;
-    public float projectileSize;
-    // public ProjectileBase projectile;
+    public float duration;
+    public float size;
 }
 [Serializable]
 public enum WeaponType{
