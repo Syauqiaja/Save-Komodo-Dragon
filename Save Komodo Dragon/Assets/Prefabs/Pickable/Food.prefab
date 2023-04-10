@@ -99,6 +99,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickableType: 4
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0075359847
+      inSlope: -0.69397104
+      outSlope: -0.69397104
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.10094479
+    - serializedVersion: 3
+      time: 0.23245923
+      value: -0.032458287
+      inSlope: -0.03510954
+      outSlope: 0.12912387
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32376692
+    - serializedVersion: 3
+      time: 0.99583334
+      value: 0.9999635
+      inSlope: 3.6914408
+      outSlope: 0.0064919074
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.06520353
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!61 &4692145224697501274
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -116,7 +149,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.41900855, y: 0.38300002}
+    oldSize: {x: 0.5237607, y: 0.47875002}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

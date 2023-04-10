@@ -5,7 +5,7 @@ using UnityEngine.Events;
 using System;
 using System.Linq;
 
-public class DataPresistenceManager : StaticInstance<DataPresistenceManager>
+public class DataPresistenceManager : PersistentSingleton<DataPresistenceManager>
 {
     [SerializeField] private DataOverScene dataHolder;
     [SerializeField] private string fileName = "";
@@ -64,7 +64,7 @@ public class DataPresistenceManager : StaticInstance<DataPresistenceManager>
         int[] _itemRarity = new int[dataHolder.itemHeld.Count];
         for (int i = 0; i < dataHolder.itemHeld.Count; i++)
         {
-            _itemHeld[i] = ((int)dataHolder.itemHeld[i].item.itemType);
+            _itemHeld[i] = ((int)dataHolder.itemHeld[i].scriptableItem.itemType);
             _itemLevel[i] = dataHolder.itemHeld[i].level;
             _itemRarity[i] = ((int)dataHolder.itemHeld[i].rarity);
         }
@@ -97,7 +97,7 @@ public class DataPresistenceManager : StaticInstance<DataPresistenceManager>
         dataHolder.HeroBundles = new List<HeroBundle>();
         for (int i = 0; i < gameData.heroIsUnlocked.Length; i++)
         {
-            dataHolder.HeroBundles.Add(new HeroBundle(gameData.heroIsUnlocked[i], gameData.heroLevels[i]));
+            dataHolder.HeroBundles.Add(new HeroBundle(gameData.heroIsUnlocked[i], gameData.heroLevels[i], ResourceSystem.Instance.Heroes[i].heroType));
         }
         
         dataHolder.MapUnclokedBundles = new List<MapBundle>();

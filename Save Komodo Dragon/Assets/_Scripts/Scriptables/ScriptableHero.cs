@@ -12,6 +12,8 @@ public class ScriptableHero : ScriptableUnit{
     public int heroPrice;
     public List<Sprite> heroSprites;
 
+    public Sprite GetHeroSpriteAtLevel(int level) => heroSprites[level-1];
+
     [Header("Weapon Skill")]
     public ScriptableSkill WeaponSkill;
 }

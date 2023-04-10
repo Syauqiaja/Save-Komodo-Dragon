@@ -22,6 +22,8 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         }
     }
     public void OnPointerDown(PointerEventData eventData){
+        bound.gameObject.SetActive(true);
+        bound.position = eventData.position;
         OnDrag(eventData);
         canvasGroup.alpha = 1f;
     }
@@ -29,6 +31,7 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         posInput = Vector2.zero;
         analog.anchoredPosition = Vector2.zero;
         canvasGroup.alpha = 0.7f;
+        bound.gameObject.SetActive(false);
     }
     public static Vector2 GetJoystickAxis(){
         return posInput;

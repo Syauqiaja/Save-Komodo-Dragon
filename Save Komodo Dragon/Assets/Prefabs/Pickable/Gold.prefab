@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6441848813382340034}
   - component: {fileID: 6441848813382340033}
   - component: {fileID: 6441848813382340032}
-  - component: {fileID: -1263948622139754294}
   m_Layer: 0
   m_Name: Gold
   m_TagString: Pickable
@@ -100,6 +99,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickableType: 3
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.0075359847
+      inSlope: -0.69397104
+      outSlope: -0.69397104
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.10094479
+    - serializedVersion: 3
+      time: 0.23245923
+      value: -0.032458287
+      inSlope: -0.03510954
+      outSlope: 0.12912387
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32376692
+    - serializedVersion: 3
+      time: 0.99583334
+      value: 0.9999635
+      inSlope: 3.6914408
+      outSlope: 0.0064919074
+      tangentMode: 1
+      weightedMode: 0
+      inWeight: 0.06520353
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   diamondValue: 10
 --- !u!61 &6441848813382340032
 BoxCollider2D:
@@ -127,16 +159,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3395, y: 0.3395}
   m_EdgeRadius: 0
---- !u!114 &-1263948622139754294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6441848813382340047}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d3c942355d96e249a1ff4bd17d2e0e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pickableType: 6

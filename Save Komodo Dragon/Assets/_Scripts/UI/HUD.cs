@@ -14,7 +14,7 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI levelText;
 
     [Header("Level Up")]
-    public CanvasGroup levelUpPanel;
+    public PanelTween levelUpPanel;
     public List<SkillUpButton> skillUpButtons = new List<SkillUpButton>();
     public List<EquipmentContainer> equipmentContainers = new List<EquipmentContainer>();
     
@@ -34,7 +34,7 @@ public class HUD : MonoBehaviour
     public TextMeshProUGUI goldText;
     public TextMeshProUGUI enemyKilledText;
     public CanvasGroup HomeConfirmation;
-    public TreasureSpinner treasureSpinner;
+    public PanelTween treasureSpinnerPanel;
     private GameObject _openedBy;
 
     [Header("On Win")]
@@ -50,9 +50,8 @@ public class HUD : MonoBehaviour
 
     private void Awake() {
         
-            skillCardGroups = SkillGroup.GetComponentsInChildren<PauseCard>();
-            clothCardGroups = ClothGroup.GetComponentsInChildren<PauseCard>();
-        
+        skillCardGroups = SkillGroup.GetComponentsInChildren<PauseCard>();
+        clothCardGroups = ClothGroup.GetComponentsInChildren<PauseCard>();
     }
     private void Start() {
         GameManager.OnBeforeStateChanged += BeforeActionHandler;
@@ -96,21 +95,19 @@ public class HUD : MonoBehaviour
     }
     public void OpenLevelUp(){
         Time.timeScale = 0;
-        levelUpPanel.alpha = 0;
         for (int i = 0; i < 3; i++)
         {
             skillUpButtons[i].SetUpButton(GameManager.Instance.GetPreparedEquipment(i));
         }
-        levelUpPanel.alpha = 0;
         levelUpPanel.gameObject.SetActive(true);
-        LeanTween.alphaCanvas(levelUpPanel, 1, 0.2f).setIgnoreTimeScale(true);
+        levelUpPanel.Show();
+    }
+    public void OpenTreasure(){
+        treasureSpinnerPanel.gameObject.SetActive(true);
+        treasureSpinnerPanel.Show();
     }
     public void CloseLevelUp(){
-        LeanTween.alphaCanvas(levelUpPanel, 0, 0.2f).setOnStart(()=>{levelUpPanel.alpha = 0;})
-            .setIgnoreTimeScale(true).setOnComplete(()=>{
-                levelUpPanel.gameObject.SetActive(false);
-                Time.timeScale = 1;
-            });
+        levelUpPanel.QuickHide(()=>{Time.timeScale = 1;});
     }
     void OpenDangerText(CanvasGroup canvasGroup){
         canvasGroup.gameObject.SetActive(true);
@@ -164,14 +161,14 @@ public class HUD : MonoBehaviour
         Time.timeScale = 0f;
         pausePanel.alpha = 0;
         pausePanel.gameObject.SetActive(true);
-        LeanTween.alphaCanvas(pausePanel, 1, 0.2f).setIgnoreTimeScale(true).setIgnoreTimeScale(true).setOnComplete(()=>{
+        LeanTween.alphaCanvas(pausePanel, 1, 0.1f).setIgnoreTimeScale(true).setIgnoreTimeScale(true).setOnComplete(()=>{
             _pauseState = 2;
         });
     }
     private void DoUnpause(){
         _pauseState = 1;
         pausePanel.alpha = 1;
-        LeanTween.alphaCanvas(pausePanel, 0, 0.2f).setIgnoreTimeScale(true).setIgnoreTimeScale(true).setOnComplete(()=>{
+        LeanTween.alphaCanvas(pausePanel, 0, 0.1f).setIgnoreTimeScale(true).setIgnoreTimeScale(true).setOnComplete(()=>{
             _pauseState = 0;
             Time.timeScale = 1f;
             pausePanel.gameObject.SetActive(false);
@@ -188,7 +185,7 @@ public class HUD : MonoBehaviour
     }
     public void BackToHome(){
         Time.timeScale = 1f;
-        GameManager.Instance.ChangeState(GameState.BattleOver);
+        SceneLoader.Instance.LoadScene(LoadingContentType.MainMenu);
     }
 }
 

@@ -4,5 +4,9 @@ using UnityEngine;
 
 public class Magnet : PickableBase
 {
-
+    protected override void Picked()
+    {
+        ObjectPooler.Instance.CollectAllDiamonds();
+        base.Picked();
+    }
 }

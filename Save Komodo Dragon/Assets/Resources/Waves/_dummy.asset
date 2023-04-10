@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a04ad5c6304e347b067813098e3772, type: 3}
+  m_Name: _dummy
+  m_EditorClassIdentifier: 
+  phases:
+  - delay: 0
+    duration: 5
+    rate: 0.7
+    state: 3
+    enemyPair:
+    - enemyData: {fileID: 11400000, guid: b6870a321d9a411408e67bfea5c2a24b, type: 2}
+      countMax: 50
+      spawnOnce: 0
+    - enemyData: {fileID: 11400000, guid: d5f950937e067e64589226c03cf49402, type: 2}
+      countMax: 1
+      spawnOnce: 1
+  bossPhase:
+    bossPrefab: {fileID: 8116792842879039483, guid: 080cabcd90024c247b497632d63cfce2, type: 3}
+    Bound: {fileID: 2983619297236352167, guid: 55eeffb93ed3cb04986ef5a502b50fc2, type: 3}

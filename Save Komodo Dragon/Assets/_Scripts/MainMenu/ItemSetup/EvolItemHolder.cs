@@ -15,7 +15,7 @@ public class EvolItemHolder : MonoBehaviour
             _item = value;
             if(value != null){
                 contentImage.enabled = true;
-                contentImage.sprite = value.item.menuImage;
+                contentImage.sprite = value.scriptableItem.menuImage;
                 frameImage.sprite = ResourceSystem.Instance.GetRaritySprite(value.rarity);
             }else{
                 contentImage.enabled = false;
@@ -24,8 +24,4 @@ public class EvolItemHolder : MonoBehaviour
         }
     }
     private ItemBundle _item = null;
-
-    public void Deselect(){
-        item = null;
-    }
 }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class ObjectPooler : StaticInstance<ObjectPooler>
 {
+    public static event Action GetAllDiamonds;
+
     [Header("Object To Pool")]
     public List<ObjectToPool> objectToPools = new List<ObjectToPool>();
 
@@ -101,6 +104,10 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
         }
         return null;
     }
+    public void CollectAllDiamonds(){
+        GetAllDiamonds?.Invoke();
+    }
+
     public DamageText GetParticle(ParticleType type){
         foreach (DamageText particle in particleBases)
         {

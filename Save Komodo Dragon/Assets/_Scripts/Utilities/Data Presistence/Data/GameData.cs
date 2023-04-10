@@ -46,7 +46,14 @@ public class GameData
         bestSurviveTime = new int[1]{0};
 
         // Added Manually as the hero count
-        heroIsUnlocked = new bool[]{true,false,false,false,false,false,false};
-        heroLevels = new int[]{1,0,0,0,0,0,0};
+        heroIsUnlocked = new bool[ResourceSystem.Instance.Heroes.Count];
+        heroLevels = new int[ResourceSystem.Instance.Heroes.Count];
+        for (int i = 1; i < heroIsUnlocked.Length; i++)
+        {
+            heroIsUnlocked[i] = false;
+            heroLevels[i] = 0;
+        }
+        heroIsUnlocked[0] = true;
+        heroLevels[0] = 1;
     }
 }

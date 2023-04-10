@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     [HideInInspector] public List<ScriptableItem> itemObtained = new List<ScriptableItem>();
     [HideInInspector] public List<ScriptableEquipment> preparedEquipment = new List<ScriptableEquipment>();
     public float Timer {get; private set;}
+    private bool isWin = false;
     private float maxExp;
     private int enemyKilled=0;
 
@@ -47,13 +48,15 @@ public class GameManager : Singleton<GameManager>
     public void AddExp(int value){
         Exp += Mathf.FloorToInt(value * ClothHandler.Instance.expMultiplier);
         CanvasHUD.expFillImage.fillAmount = Exp/maxExp;
-        if(Exp >= maxExp) HandleLevelUp();
+        if(Exp>= maxExp){
+            Exp = 0;
+            maxExp = Mathf.Round(maxExp * 1.5f);
+            HandleLevelUp();
+        }
     }
     private void UpdateLevel(){
-        CanvasHUD.CloseLevelUp();
-        Exp = 0;
-        maxExp = Mathf.Round(maxExp * 1.3f);
         CanvasHUD.expFillImage.fillAmount = 0;
+        CanvasHUD.CloseLevelUp();
     }
     public void HandleLevelUp(){
         ExpLevel++;
@@ -152,7 +155,7 @@ public class GameManager : Singleton<GameManager>
                 HandleOnBattleEnd();
                 break;
             case GameState.BattleOver:
-                SceneLoader.Instance.LoadScene("MainMenu");
+                SceneLoader.Instance.LoadScene(isWin? LoadingContentType.WinMainMenu : LoadingContentType.LoseMainMenu);
                 break;
             case GameState.WaveChange:
                 break;
@@ -187,7 +190,7 @@ public class GameManager : Singleton<GameManager>
     //============= Pickable Handler BEGIN ===================
     public void OpenChest(){
         Time.timeScale = 0f;
-        CanvasHUD.treasureSpinner.gameObject.SetActive(true);
+        CanvasHUD.OpenTreasure();
     }
     public void GoldPicked(int value){
         goldEarned += value;

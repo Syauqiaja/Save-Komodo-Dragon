@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Base of enemy prefabs
-public class EnemyUnitBase : UnitBase
+public class EnemyUnitBase : UnitBase, IHeroDamager
 {
-    public int hitDamage {get; private set;}
+    public int hitDamage {get; protected set;}
     public EnemyType enemyType;
     public PickableType pickableType {get; private set;}
     protected Transform _t;
@@ -16,10 +16,19 @@ public class EnemyUnitBase : UnitBase
         _t = transform;
         _r = GetComponent<Rigidbody2D>();
     }
+    private void OnEnable() {
+        UnitManager.KillAllEnemies += Death;   
+    }
+    private void OnDisable() {
+        UnitManager.KillAllEnemies -= Death;
+    }
     protected virtual void Start() {
         heroTransform = UnitManager.Instance.heroUnit.transform;
     }
     void FixedUpdate(){
+        Move();
+    }
+    public virtual void Move(){
         moveDirection = (heroTransform.position - _t.position).normalized;
         _r.AddForce(BaseStats.travelSpeed * moveDirection);
         _t.localScale = new Vector3(Mathf.Sign(moveDirection.x),1,1);
@@ -29,6 +38,7 @@ public class EnemyUnitBase : UnitBase
         this.hitDamage = hitDamage;
         this.pickableType = pickableType;
     }
+    
     public override void Death()
     {
         GameManager.Instance.EnemyKilled();
@@ -42,5 +52,10 @@ public class EnemyUnitBase : UnitBase
         UnitManager.Instance.SpawnTextDamage((int) hitValue, _t.position);
         base.Damaged(hitValue);
         _r.AddForce(-moveDirection, ForceMode2D.Impulse);
+    }
+
+    public void GetDamage(out int damage)
+    {
+        damage = hitDamage;
     }
 }

@@ -37,7 +37,6 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     public void StartGame(){
-        string mapSelected = "Chapter_"+dataHolder.SelectedMap.ToString();
-        SceneLoader.Instance.LoadScene(mapSelected);
+        SceneLoader.Instance.LoadLevel(ResourceSystem.Instance.GetMap(dataHolder.SelectedMap));
     }
 }

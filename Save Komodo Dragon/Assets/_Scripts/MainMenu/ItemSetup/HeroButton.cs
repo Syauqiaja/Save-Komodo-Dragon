@@ -13,7 +13,8 @@ public class HeroButton : UnitButton
     public Button buyButton;
     public TextMeshProUGUI heroPrice;
 
-    [HideInInspector] public ScriptableHero hero;
+    [HideInInspector] public ScriptableHero scriptableHero;
+    [HideInInspector] public HeroBundle heroBundle;
 
     public bool isSelected{get {
         return selectedFrame.gameObject.activeSelf;
@@ -32,15 +33,20 @@ public class HeroButton : UnitButton
         _button.interactable = true;
     }
 
-    public void SetHero(ScriptableHero hero){
-        this.hero = hero;
-        this._itemImage.sprite = hero.menuSprite;
-        this._heroName.text = hero.name;
-        this._heroName2.text = hero.name;
-        this.heroPrice.text = "<sprite name=\"Crystal\"> "+hero.heroPrice;
+    public void SetHero(HeroBundle _hero){
+        this.scriptableHero = ResourceSystem.Instance.GetHero(_hero.heroType);
+        this.heroBundle = _hero;
+        if(!_hero.isUnlocked){
+            this._itemImage.sprite = scriptableHero.GetHeroSpriteAtLevel(1);
+        }else{
+            this._itemImage.sprite = scriptableHero.GetHeroSpriteAtLevel(_hero.level);
+        }
+        this._heroName.text = scriptableHero.name;
+        this._heroName2.text = scriptableHero.name;
+        this.heroPrice.text = "<sprite name=\"Crystal\"> "+scriptableHero.heroPrice;
     }
 
     public void Buy(){
-        setup.BuyHero(hero);
+        setup.BuyHero(scriptableHero);
     }
 }

@@ -16,7 +16,21 @@ MonoBehaviour:
   _stats:
     health: 1000
     travelSpeed: 2
-  description: 
+  description: 'This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero This is the story of hero This is the story of hero This is the story
+    of hero '
   menuSprite: {fileID: 21300000, guid: 65a81b3f374dc7c4c9a0a5ede8748d31, type: 3}
   heroType: 0
   Prefab: {fileID: 6682583353972452465, guid: 7021d57985db9d247b08b41255f3ec51, type: 3}

@@ -46,9 +46,7 @@ public class HeroUnitBase : UnitBase
     public override void Damaged(float hitValue)
     {   
         // Damaging every 0.2s
-        // base.Damaged(Mathf.CeilToInt(hitValue * ClothHandler.Instance.damageReduce) * Time.deltaTime * 10f);
-
-        base.Damaged(hitValue);
+        base.Damaged(Mathf.CeilToInt(hitValue * ClothHandler.Instance.damageReduce) * Time.deltaTime * 10f);
         UpdateHealthBar();
     }
     public void Heal(int healAmount){

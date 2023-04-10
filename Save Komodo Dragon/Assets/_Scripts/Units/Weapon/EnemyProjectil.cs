@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyProjectil : ProjectileBase
+public class EnemyProjectil : ProjectileBase, IHeroDamager
 {
     private Rigidbody2D _rigid;
 
@@ -11,13 +11,20 @@ public class EnemyProjectil : ProjectileBase
     }
     protected override void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player")){
-            UnitManager.Instance.heroUnit.Damaged(hitDamage);
-        }else if(other.CompareTag("BossBound")) gameObject.SetActive(false);
     }
     public override void Launch(Vector2 direction)
     {
         base.Launch(direction);
+        transform.up = -direction;
         _rigid.velocity = direction;
+        Invoke("Disable", lifeTime);
+    }
+    void Disable(){
+        gameObject.SetActive(false);
+    }
+
+    public void GetDamage(out int damage)
+    {
+        damage = hitDamage;
     }
 }

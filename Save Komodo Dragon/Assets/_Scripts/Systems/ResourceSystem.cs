@@ -8,7 +8,7 @@ using UnityEngine;
 /// I make this a MonoBehaviour as sometimes I add some debug/development references in the editor.
 /// If you don't feel free to make this a standard class
 /// </summary>
-public class ResourceSystem : StaticInstance<ResourceSystem> {
+public class ResourceSystem : PersistentSingleton<ResourceSystem> {
     [SerializeField] private List<Sprite> raritySprite;
     public List<ScriptableSkill> Skills { get; private set; }
     public List<ScriptableCloth> Cloths { get; private set; }
@@ -24,6 +24,7 @@ public class ResourceSystem : StaticInstance<ResourceSystem> {
     protected override void Awake() {
         base.Awake();
         AssembleResources();
+        Application.targetFrameRate = 60;
     }
 
     private void AssembleResources() {

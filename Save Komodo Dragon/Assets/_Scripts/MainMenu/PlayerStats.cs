@@ -13,7 +13,7 @@ public class PlayerStats : MonoBehaviour
     public TextMeshProUGUI energy;
 
     private void Awake() {
-        dataHolder.OnGoldChanged += SetGold;
+        dataHolder.OnEconomyChanged += RefreshStats;
         DataPresistenceManager.OnAfterLoad += RefreshStats;
     }
     private void Start() {
@@ -21,6 +21,9 @@ public class PlayerStats : MonoBehaviour
     }
     void SetGold(){
         gold.text = dataHolder.Gold.ToString();
+    }
+    void SetCrystal(){
+        crystal.text = dataHolder.Crystal.ToString();
     }
     private void RefreshStats() {
         if(!dataHolder.IsLoaded) return;
@@ -30,7 +33,7 @@ public class PlayerStats : MonoBehaviour
         energy.text = dataHolder.Energy.ToString();
     }
     private void OnDestroy() {
-        dataHolder.OnGoldChanged -= SetGold;
+        dataHolder.OnEconomyChanged -= SetGold;
         DataPresistenceManager.OnAfterLoad -= RefreshStats;
     }
 }

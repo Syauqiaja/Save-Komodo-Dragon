@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TreasureSpinner : MonoBehaviour
 {
     [SerializeField] private GameObject mainPanel;
+    [SerializeField] private PanelTween panelTween;
     [SerializeField] private GameObject resultPanel;
     [SerializeField] private Transform itemsParent;
     [SerializeField] private TreasureCard[] results = new TreasureCard[3];
@@ -25,9 +26,9 @@ public class TreasureSpinner : MonoBehaviour
             frame[i] = itemsParent.GetChild(i).GetChild(1).gameObject;
             itemImages[i] = itemsParent.GetChild(i).GetChild(0).GetComponent<Image>();
         }
+        panelTween.afterShow += StartSpinning;
     }
     private void OnEnable() {
-        // spinButton.interactable = true;
         nextButton.interactable = false;
         mainPanel.SetActive(true);
         resultPanel.SetActive(false);
@@ -35,6 +36,7 @@ public class TreasureSpinner : MonoBehaviour
     }
     private void FillItemsAndReturn(){
         List<ScriptableEquipment> equipmentList = GameManager.Instance.GetEquipmentHeldList();
+        equipmentList.RemoveAll(e => GameManager.Instance.GetEquipmentLevel(e) == 4);
         int count = equipmentList.Count;
 
         selectedIndex = Random.Range(0,16);
@@ -45,6 +47,8 @@ public class TreasureSpinner : MonoBehaviour
             frame[i].SetActive(false);
             if(i == selectedIndex) selected = equipment;
         }
+    }
+    public void StartSpinning(){
         StartCoroutine(Spinning(selectedIndex + SPIN_COUNT+1));
     }
     IEnumerator Spinning(int stopAt){
@@ -69,8 +73,6 @@ public class TreasureSpinner : MonoBehaviour
         resultPanel.SetActive(true);
     }
     public void ConfirmSelected(){
-        resultPanel.SetActive(false);
-        mainPanel.SetActive(true);
         if(selected.equipmentType == EquipmentType.Skill)
             GameManager.Instance.UpgradeEquipment(((ScriptableSkill) selected).skillType);
         else if(selected.equipmentType == EquipmentType.Cloth){
@@ -80,6 +82,6 @@ public class TreasureSpinner : MonoBehaviour
             GameManager.Instance.UpgradeEquipment(((ScriptableCloth) selected).clothType);
         }
         Time.timeScale = 1f;
-        gameObject.SetActive(false);
+        GetComponent<PanelTween>().QuickHide();
     }
 }

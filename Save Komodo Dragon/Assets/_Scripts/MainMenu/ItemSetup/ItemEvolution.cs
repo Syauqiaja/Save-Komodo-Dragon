@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemEvolution : MonoBehaviour
 {
     public DataOverScene dataHolder;
     [SerializeField] private Transform itemButtonContainer;
+    [SerializeField] private ItemDetail itemDetail;
+    [SerializeField] private Button evolveButton;
+    [SerializeField] private UITween topUITween, botUITween;
 
     [Header("Item Joins")]
     [SerializeField] private EvolItemHolder resultItem;
@@ -13,6 +17,8 @@ public class ItemEvolution : MonoBehaviour
     [SerializeField] private EvolItemHolder holdedItem2;
 
     private List<EvolItemButton> itemButtons;
+    private ItemBundle _itemBundle;
+    private int index;
     private void Awake() {
         ClearSlot();
         itemButtons = new List<EvolItemButton>(itemButtonContainer.GetComponentsInChildren<EvolItemButton>(true));
@@ -24,21 +30,38 @@ public class ItemEvolution : MonoBehaviour
         }
     }
     private void ClearSlot(){
+        evolveButton.interactable = false;
         holdedItem1.item = null;
         holdedItem2.item = null;
-        resultItem.item = null;
+        resultItem.item = _itemBundle;
     }
-    public void OpenEvolution(ItemBundle itemBundle){
+    public void OpenEvolution(ItemBundle itemBundle, int index){
         int i = 0; //Item buttons iterator
+        this.index = index;
+        _itemBundle = itemBundle;
+        resultItem.item = _itemBundle;
         ResetContainer();
         foreach (ItemBundle item in dataHolder.itemHeld)
         {
-            if(item.item.itemType == itemBundle.item.itemType){
+            if(item.scriptableItem.itemType == itemBundle.scriptableItem.itemType && item != itemBundle && item.rarity == itemBundle.rarity){
                 itemButtons[i].gameObject.SetActive(true);
                 itemButtons[i].SetItem(item);
                 i++;
             }
         }
+    }
+
+    public void BackToDetail(){
+        itemDetail.gameObject.SetActive(true);
+        itemDetail.OpenItemDetail(_itemBundle,index);
+        topUITween.Hide();
+        botUITween.Hide();
+        Invoke("CloseThis", botUITween.delay + botUITween.leanTime);
+    }
+
+    void CloseThis(){
+        ClearSlot();
+        gameObject.SetActive(false);
     }
 
     public void AddToSlot(EvolItemButton itemAdded){
@@ -54,9 +77,11 @@ public class ItemEvolution : MonoBehaviour
         // Check if both items have same rarity
         if(holdedItem1.item != null && holdedItem2.item != null)
         if(holdedItem1.item.rarity == holdedItem2.item.rarity){
-            resultItem.item = new ItemBundle(itemAdded.item.item, 1, false, (Rarity)(((int)itemAdded.item.rarity) + 1));
+            resultItem.item = new ItemBundle(itemAdded.item.scriptableItem, 1, false, (Rarity)(((int)itemAdded.item.rarity) + 1));
+            evolveButton.interactable = true;
         }else{
-            resultItem.item = null;
+            resultItem.item = _itemBundle;
+            evolveButton.interactable = false;
         }
     }
 
@@ -64,8 +89,19 @@ public class ItemEvolution : MonoBehaviour
         if(resultItem.item == null) return;
         dataHolder.itemHeld.Remove(holdedItem1.item);
         dataHolder.itemHeld.Remove(holdedItem2.item);
+        dataHolder.itemHeld.Remove(_itemBundle);
         dataHolder.itemHeld.Add(resultItem.item);
-        OpenEvolution(resultItem.item);
+        itemDetail.gameObject.SetActive(true);
+        itemDetail.OpenItemDetail(resultItem.item, dataHolder.itemHeld.Count-1);
         ClearSlot();
+
+        topUITween.Hide();
+        botUITween.Hide();
+        Invoke("CloseThis", botUITween.delay + botUITween.leanTime);
+    }
+    public void Deselect(EvolItemHolder deselectedItem){
+        deselectedItem.item = null;
+        evolveButton.interactable=false;
+        resultItem.item = _itemBundle;
     }
 }

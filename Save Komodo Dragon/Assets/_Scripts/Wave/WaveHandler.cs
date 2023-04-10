@@ -64,7 +64,7 @@ public class WaveHandler : MonoBehaviour
     private IEnumerator BossPhase(){
         yield return new WaitForSeconds(2.5f); //wait for boss danger text
 
-        UnitManager.Instance.KillAllEnemy();
+        UnitManager.Instance.KillEnemies();
         BossPhase phase = waveData[currentWave].bossPhase;
         if(bossBound == null) bossBound = Instantiate(phase.Bound);
         bossBound.transform.position = spawnArea.GetCenter();
@@ -74,7 +74,7 @@ public class WaveHandler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        UnitManager.Instance.TrySpawnEnemy(phase.bossType, bossPlace.transform.position, 1);
+        UnitManager.Instance.TrySpawnEnemy(phase.bossPrefab, bossPlace.transform.position);
         bossPlace.SetActive(false);
     }
 

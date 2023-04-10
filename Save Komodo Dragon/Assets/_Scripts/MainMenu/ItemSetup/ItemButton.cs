@@ -22,7 +22,7 @@ public class ItemButton : UnitButton
     }
     public void SetItem(ItemBundle itemBundle){
         this.itemBundle = itemBundle;
-        _itemImage.sprite = itemBundle.item.menuImage;
+        _itemImage.sprite = itemBundle.scriptableItem.menuImage;
         frameImage.sprite = ResourceSystem.Instance.GetRaritySprite(itemBundle.rarity);
         this.isSelected = itemBundle.isSelected;
     }

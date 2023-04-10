@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Threading.Tasks;
+using System;
 using Cinemachine;
 
 public class UnitManager : StaticInstance<UnitManager>
 {
+    public static event Action KillAllEnemies;
     public DataOverScene dataHolder;
     public CinemachineVirtualCamera virtualCamera;
+    private CinemachineBasicMultiChannelPerlin basicMultiChannelPerlin;
+    private float _timer=0;
     [HideInInspector] public Dictionary<EnemyType,List<EnemyUnitBase>> activeEnemyDict = new Dictionary<EnemyType, List<EnemyUnitBase>>();
 
     [Header("Diamon Spreader")]
@@ -18,15 +21,16 @@ public class UnitManager : StaticInstance<UnitManager>
     [HideInInspector] public HeroUnitBase heroUnit;
 
     public void SpawnHero(){
-        ScriptableHero heroSelected = dataHolder.GetSelectedHero();
+        ScriptableHero heroSelected = ResourceSystem.Instance.GetHero(dataHolder.GetSelectedHero().heroType);
 
         Debug.Log(heroSelected.name);
         heroUnit = Instantiate(heroSelected.Prefab, Vector3.zero, Quaternion.identity);
 
         //Set properties
         heroUnit.SetStats(heroSelected.BaseStats);
-        heroUnit.SetSprite(heroSelected.heroSprites[0]);
+        heroUnit.SetSprite(heroSelected.GetHeroSpriteAtLevel(1));
         virtualCamera.Follow = heroUnit.transform;
+        basicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         GameManager.Instance.AddEquipment(dataHolder.SelectedSkill);
     }
@@ -50,12 +54,18 @@ public class UnitManager : StaticInstance<UnitManager>
         enemyUnit.SetProperties(scriptableEnemy.inGameSprite, scriptableEnemy.hitDamage, scriptableEnemy.pickableType);
         enemyUnit.transform.position = position;
     }
+    public void TrySpawnEnemy(EnemyUnitBase enemyUnitBase, Vector3 position){
+        EnemyUnitBase enemyUnit = Instantiate(enemyUnitBase, position, Quaternion.identity);
+        if(!activeEnemyDict.ContainsKey(enemyUnitBase.enemyType))
+            activeEnemyDict.Add(enemyUnitBase.enemyType, new List<EnemyUnitBase>());
+        activeEnemyDict[enemyUnit.enemyType].Add(enemyUnit);  
+    }
 
     public void SpreadDiamond(){
         for(int i = 0; i<startingDiamondCount;i++){
             PickableBase pickableBase = ObjectPooler.Instance.GetPickable(PickableType.smallDiamond);
             pickableBase.gameObject.SetActive(true);
-            pickableBase.transform.position = Random.insideUnitCircle * diamondSpreadRadius;
+            pickableBase.transform.position = UnityEngine.Random.insideUnitCircle * diamondSpreadRadius;
         }
     }
     public void SpawnPickable(PickableType type, Vector3 pos){
@@ -69,18 +79,27 @@ public class UnitManager : StaticInstance<UnitManager>
         damageText.textMesh.text = damage.ToString();
         damageText._t.position = pos;
     }
-    public async void KillAllEnemy(){
-        await Task.Run(()=>{
-            foreach (EnemyType enemyType in activeEnemyDict.Keys)
-            { 
-                while(activeEnemyDict[enemyType].Count > 0){
-                    activeEnemyDict[enemyType][0].Death();
-                }
-            }
-        });
+    public void KillEnemies(){
+        KillAllEnemies?.Invoke();
     }
     private void OnDrawGizmosSelected() {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(Vector3.zero, diamondSpreadRadius);
+    }
+
+    // OOT
+    public void StartShake(float intensity, float time){
+        basicMultiChannelPerlin.m_AmplitudeGain = intensity;
+        _timer = time;
+    }
+    public void Shake(float intensity, float time){
+        LeanTween.value(gameObject, intensity, 0f, time).setOnUpdate((float value)=>{
+            basicMultiChannelPerlin.m_AmplitudeGain = value;
+        });
+    }
+    public void EndShake(){
+        LeanTween.value(gameObject, basicMultiChannelPerlin.m_AmplitudeGain, 0f, _timer).setOnUpdate((float value)=>{
+            basicMultiChannelPerlin.m_AmplitudeGain = value;
+        });
     }
 }

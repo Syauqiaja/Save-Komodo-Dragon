@@ -8,6 +8,6 @@ public class ChestItemContent : EvolItemHolder
     
     public void SetItem(ItemBundle itemBundle){
         this.item = itemBundle;
-        itemNameText.text = item.item.name;
+        itemNameText.text = item.scriptableItem.name;
     }
 }

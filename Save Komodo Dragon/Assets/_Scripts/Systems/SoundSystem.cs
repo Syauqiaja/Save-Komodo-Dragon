@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundSystem : StaticInstance<SoundSystem>
+public class SoundSystem : PersistentSingleton<SoundSystem>
 {
     [SerializeField] AudioSource audioSource;
     public void Mute(bool value){

@@ -6,19 +6,18 @@ using UnityEngine.Events;
 [CreateAssetMenu(menuName="GameData", fileName = "Game Data")]
 public class DataOverScene : ScriptableObject
 {
-    public event Action OnGoldChanged;
-    public event Action OnCrystalChanged;
+    public event Action OnEconomyChanged;
 
     public bool IsLoaded{get{return _isLoaded;} set{_isLoaded = value;}}
     private bool _isLoaded = false;
 
-    public long Gold{get{return _gold;} set{_gold = value; OnGoldChanged?.Invoke();}}
+    public long Gold{get{return _gold;} set{_gold = value; OnEconomyChanged?.Invoke();}}
     private long _gold;
 
-    public int Crystal{get{return _crystal;} set{_crystal = value; OnCrystalChanged?.Invoke();}}
+    public int Crystal{get{return _crystal;} set{_crystal = value; OnEconomyChanged?.Invoke();}}
     private int _crystal;
 
-    public int Energy{get{return _energy;} set{_energy = value;}}
+    public int Energy{get{return _energy;} set{_energy = value; OnEconomyChanged?.Invoke();}}
     private int _energy;
 
     public string PlayerName{get{return _playerName;} set{_playerName = value;}}
@@ -71,7 +70,7 @@ public class DataOverScene : ScriptableObject
     public ScriptableItem GetSelectedArmor() {
         if(SelectedArmorIndex == -1) return null;
         Debug.Log("Get selected Armor Index : " + SelectedArmorIndex);
-        return itemHeld[SelectedArmorIndex].item;
+        return itemHeld[SelectedArmorIndex].scriptableItem;
     }
     public ItemBundle GetSelectedArmorBundle() {
         if(SelectedArmorIndex == -1) return null;
@@ -85,7 +84,7 @@ public class DataOverScene : ScriptableObject
     }
     public ScriptableItem GetSelectedAccessory() {
         if(SelectedAccessoryIndex == -1) return null;
-        return itemHeld[SelectedAccessoryIndex].item;
+        return itemHeld[SelectedAccessoryIndex].scriptableItem;
     }
     public ItemBundle GetSelectedAccessoryBundle() {
         if(SelectedAccessoryIndex == -1) return null;
@@ -94,22 +93,22 @@ public class DataOverScene : ScriptableObject
     public void SetSelectedHero(HeroType t) {
         SelectedHero = t;
         SelectedSkill = ResourceSystem.Instance.GetHero(t).WeaponSkill.skillType;}
-    public ScriptableHero GetSelectedHero() => ResourceSystem.Instance.GetHero(SelectedHero);
+    public HeroBundle GetSelectedHero() => HeroBundles.Find(it => it.heroType == SelectedHero);
 }
 
 public class ItemBundle{
-    public ScriptableItem item;
+    public ScriptableItem scriptableItem;
     public int level;
     public bool isSelected;
     public Rarity rarity;
     public ItemBundle(ScriptableItem item, int level, bool isSelected,Rarity rarity){
-        this.item = item;
+        this.scriptableItem = item;
         this.level = level;
         this.isSelected = isSelected;
         this.rarity = rarity;
     }
     public int GetCurrentValue(){
-        return item.getValuesAtLevel(rarity, level);
+        return scriptableItem.getValuesAtLevel(rarity, level);
     }
 }
 
@@ -126,8 +125,10 @@ public class MapBundle{
 public class HeroBundle{
     public bool isUnlocked = false;
     public int level = 0;
-    public HeroBundle(bool i, int l){
+    public HeroType heroType;
+    public HeroBundle(bool i, int l, HeroType heroType){
         isUnlocked = i;
         level = l;
+        this.heroType = heroType;
     }
 }
