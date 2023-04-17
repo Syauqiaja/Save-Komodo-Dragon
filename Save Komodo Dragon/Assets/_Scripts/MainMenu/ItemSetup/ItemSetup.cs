@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -9,6 +10,8 @@ public class ItemSetup : MonoBehaviour
     [SerializeField] private DataOverScene dataHolder;
     [Header("Main Setup")]
     [SerializeField] GameObject mainSetupContainer;
+    [SerializeField] Wipe topSetup;
+    [SerializeField] Wipe botSetup;
     [SerializeField] private TextMeshProUGUI setupTitleText;
     [SerializeField] private TextMeshProUGUI weaponNameText;
     [SerializeField] private TextMeshProUGUI attackText;
@@ -223,7 +226,6 @@ public class ItemSetup : MonoBehaviour
         // Change selected hero System
         dataHolder.SetSelectedHero(_heroHolded.scriptableHero.heroType);
         heroDetailContainer.gameObject.SetActive(false);
-        mainSetupContainer.SetActive(true);
     }
     public void OpenHeroDetail(HeroButton heroButton){
         _heroHolded = heroButton;
@@ -234,8 +236,20 @@ public class ItemSetup : MonoBehaviour
     public void OpenItemSetup(){
         mainSetupContainer.SetActive(true);
         InitiateUI();
+        topSetup.Show();
+        botSetup.Show();
+    }
+    public void OpenItemSetup(Action action){
+        mainSetupContainer.SetActive(true);
+        InitiateUI();
+        topSetup.Show();
+        botSetup.Show(action);
     }
 
-    
+    public void CloseItemSetup(){
+        if(!mainSetupContainer.activeInHierarchy) return;
+        topSetup.Hide();
+        botSetup.Hide(()=>{mainSetupContainer.SetActive(false);});
+    }
 }
 

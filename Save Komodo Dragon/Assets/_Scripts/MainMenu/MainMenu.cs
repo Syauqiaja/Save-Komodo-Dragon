@@ -7,6 +7,7 @@ using System;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] GameObject ShopPart, BattlePart, SetupPart;
+    [SerializeField] ItemSetup setupPart;
     [SerializeField] GameObject QuitConfirmation;
     [SerializeField] DataOverScene dataHolder;
     
@@ -18,17 +19,18 @@ public class MainMenu : MonoBehaviour
     public void OpenShop(){
         ShopPart.SetActive(true);
         BattlePart.SetActive(false);
-        SetupPart.SetActive(false);
+        setupPart.CloseItemSetup();
     }
     public void OpenBattle(){
         ShopPart.SetActive(false);
         BattlePart.SetActive(true);
-        SetupPart.SetActive(false);
+        setupPart.CloseItemSetup();
     }
     public void OpenSetup(){
-        ShopPart.SetActive(false);
-        BattlePart.SetActive(false);
-        SetupPart.SetActive(true);
+        setupPart.OpenItemSetup(()=>{
+            ShopPart.SetActive(false);
+            BattlePart.SetActive(false);
+        });
     }
     public void OpenQuit(){
         QuitConfirmation.SetActive(true);

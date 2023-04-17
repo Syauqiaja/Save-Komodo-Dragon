@@ -16,7 +16,7 @@ public class HeroUnitBase : UnitBase
     protected SpriteRenderer spriteRenderer;
     [HideInInspector] public Vector3 facingDirection;
     [HideInInspector] public List<Transform> enemyFront = new List<Transform>();
-    
+    [HideInInspector] public List<Transform> enemyNear = new List<Transform>();
 
     protected virtual void Awake() {
         _r = GetComponent<Rigidbody2D>();

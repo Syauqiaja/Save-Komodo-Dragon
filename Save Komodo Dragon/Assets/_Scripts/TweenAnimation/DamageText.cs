@@ -1,9 +1,8 @@
 using UnityEngine;
 using TMPro;
 
-public class DamageText : MonoBehaviour
+public class DamageText : ParticleBase
 {
-    public ParticleType particleType;
     [HideInInspector] public TextMeshPro textMesh;
     [HideInInspector] public Transform _t;
 
@@ -25,7 +24,4 @@ public class DamageText : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public enum ParticleType{
-    DamageText,
-}
+

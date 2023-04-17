@@ -11,6 +11,7 @@ public class NavButton : MonoBehaviour
     [SerializeField] private LayoutElement layoutElement;
     [SerializeField] private RectTransform bgImage;
     [SerializeField] private GameObject text;
+    [SerializeField] private Button button;
     public bool IsSelected {get{
         return _isSelected;
     }set{
@@ -33,6 +34,7 @@ public class NavButton : MonoBehaviour
         LeanTween.value(gameObject, iconRect.localScale.x, 1.5f, LEAN_TIME).setEaseInOutSine().setOnUpdate((float value)=>{
             iconRect.localScale = new Vector3(value,value,1f);
         }).setOnComplete(()=>{text.SetActive(true);});
+        button.interactable = false;
     }
     void Deactivate(){
         if(!IsSelected) return;
@@ -44,5 +46,6 @@ public class NavButton : MonoBehaviour
         LeanTween.value(gameObject, iconRect.localScale.x, 1f, LEAN_TIME).setEaseInOutSine().setOnUpdate((float value)=>{
             iconRect.localScale = new Vector3(value,value,1f);
         });
+        button.interactable = true;
     }
 }

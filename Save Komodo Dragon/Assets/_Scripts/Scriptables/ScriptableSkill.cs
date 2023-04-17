@@ -21,4 +21,11 @@ public enum SkillType{
     DracoSword=4,
     KerisBali=5,
     BanaspathiOrb = 6,
+    LemparSandal = 7,
+    PetasanBanting=8,
+    Kalawali=9,
+    KapakBatu=10,
+    Ketapel=11,
+    Pletokan=12,
+    PoisonousSpear=13,
 }

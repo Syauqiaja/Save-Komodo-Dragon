@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0720e3462c89adf43945c49732f4eab4, type: 3}
+  m_Name: LemparSandal
+  m_EditorClassIdentifier: 
+  menuName: Lempar Sandal
+  menuImage: {fileID: 21300000, guid: 3f1f399c3799e1b459fb02ac2f21ffdf, type: 3}
+  menuDesc:
+  - Throwing Sandal
+  - Throwing Sandal
+  - Throwing Sandal
+  - Throwing Sandal
+  - Throwing Sandal
+  equipmentType: 0
+  skillType: 7
+  prefab: {fileID: 6731670227327470298, guid: bbe9715cf05ec8945a4228d1a32a2679, type: 3}
+  weaponStats:
+  - AttackPower: 150
+    FiringRate: 1
+    speed: 2
+    launchRadius: 0
+    duration: 3
+    size: 1
+  - AttackPower: 200
+    FiringRate: 0.1
+    speed: 2
+    launchRadius: 0
+    duration: 3
+    size: 1
+  - AttackPower: 200
+    FiringRate: 0.1
+    speed: 2
+    launchRadius: 0
+    duration: 3
+    size: 1.5
+  - AttackPower: 200
+    FiringRate: 0.3
+    speed: 2
+    launchRadius: 0
+    duration: 3
+    size: 1.5
+  - AttackPower: 300
+    FiringRate: 0.3
+    speed: 2
+    launchRadius: 0
+    duration: 3
+    size: 1.5

@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class DetectorRadius : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    HeroUnitBase heroUnit;
+    private void Awake() {
+        heroUnit = transform.parent.GetComponent<HeroUnitBase>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.CompareTag("Enemy")){
+            foreach (Transform item in heroUnit.enemyNear)
+            {
+                if(!item.gameObject.activeInHierarchy) {
+                    continue;
+                }
+                if(item == other.transform){
+                    return;
+                }
+            }
+            heroUnit.enemyNear.Add(other.transform);
+        }
+    }
+    
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.CompareTag("Enemy")){
+            if(heroUnit.enemyNear.Contains(other.transform)) heroUnit.enemyNear.Remove(other.transform);
+        }
     }
 }

@@ -39,4 +39,4 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a7bd036d51dbb7e449939a8dec25301a, type: 3}
   - {fileID: 21300000, guid: a32524e56fad0c24ea9e4d142b9615c2, type: 3}
   - {fileID: 21300000, guid: 80a9bbdb5cbdaef43bd78876be3fdfc2, type: 3}
-  WeaponSkill: {fileID: 11400000, guid: 4a5439074dec1cd4b89f77e4bf992ca1, type: 2}
+  WeaponSkill: {fileID: 11400000, guid: 835cc873bc4a35d49b012f6153a45ce2, type: 2}

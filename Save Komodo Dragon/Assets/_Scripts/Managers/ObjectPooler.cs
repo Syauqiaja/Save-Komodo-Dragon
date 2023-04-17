@@ -13,7 +13,8 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
     private List<ProjectileBase> projectileBases = new List<ProjectileBase>();
     private List<EnemyUnitBase> enemyUnitBases = new List<EnemyUnitBase>();
     private List<PickableBase> pickableBases = new List<PickableBase>();
-    private List<DamageText> particleBases = new List<DamageText>();
+    private List<ParticleBase> particleBases = new List<ParticleBase>();
+    private List<DamageText> damageTexts = new List<DamageText>();
     protected override void Awake()
     {
         base.Awake();
@@ -29,7 +30,8 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
                 if(pooledObject.poolType == PoolType.Projectile) projectileBases.Add(go.GetComponent<ProjectileBase>());
                 else if (pooledObject.poolType == PoolType.Enemy) enemyUnitBases.Add(go.GetComponent<EnemyUnitBase>());
                 else if(pooledObject.poolType == PoolType.Pickable) pickableBases.Add(go.GetComponent<PickableBase>());
-                else if(pooledObject.poolType == PoolType.Particle) particleBases.Add(go.GetComponent<DamageText>());
+                else if(pooledObject.poolType == PoolType.Particle) particleBases.Add(go.GetComponent<ParticleBase>());
+                else if(pooledObject.poolType == PoolType.damageText) damageTexts.Add(go.GetComponent<DamageText>());
             }
         }
     }
@@ -108,8 +110,8 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
         GetAllDiamonds?.Invoke();
     }
 
-    public DamageText GetParticle(ParticleType type){
-        foreach (DamageText particle in particleBases)
+    public ParticleBase GetParticle(ParticleType type){
+        foreach (ParticleBase particle in particleBases)
         {
             if(particle.particleType == type && !particle.gameObject.activeInHierarchy){
                 return particle;
@@ -117,7 +119,26 @@ public class ObjectPooler : StaticInstance<ObjectPooler>
         }
         foreach (ObjectToPool item in objectToPools)
         {
-            if(item.poolType == PoolType.Particle && item.prefab.GetComponent<DamageText>().particleType == type){
+            if(item.poolType == PoolType.Particle && item.prefab.GetComponent<ParticleBase>().particleType == type){
+                GameObject go = Instantiate(item.prefab);
+                go.SetActive(false);
+                ParticleBase pb = go.GetComponent<ParticleBase>();
+                particleBases.Add(pb);
+                return pb;
+            }
+        }
+        return null;
+    }
+    public DamageText GetDamageText(){
+        foreach (DamageText damageText in damageTexts)
+        {
+            if(!damageText.gameObject.activeInHierarchy){
+                return damageText;
+            }
+        }
+        foreach (ObjectToPool item in objectToPools)
+        {
+            if(item.poolType == PoolType.damageText){
                 GameObject go = Instantiate(item.prefab);
                 go.SetActive(false);
                 DamageText pb = go.GetComponent<DamageText>();
@@ -142,4 +163,5 @@ public enum PoolType{
     Enemy = 1,
     Pickable = 2,
     Particle = 3,
+    damageText=4,
 }

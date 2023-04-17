@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,11 +22,12 @@ public class Wipe : UITween
 
     private void Awake() {
         rectTransform = GetComponent<RectTransform>();
-        startPos = rectTransform.position;
-        leftScreenBound = new Vector3(startPos.x-Screen.width, startPos.y, 0);
-        rightScreenBound = new Vector3(startPos.x+Screen.width, startPos.y, 0);
-        topScreenBound = new Vector3(startPos.x, startPos.y+Screen.height, 0);
-        bottomScreenBound = new Vector3(startPos.x, startPos.y-Screen.height, 0);
+        startPos = transform.position;
+        RectTransform parentTrans = transform.parent.GetComponent<RectTransform>();
+        leftScreenBound = new Vector3(startPos.x-parentTrans.rect.width, startPos.y, 0);
+        rightScreenBound = new Vector3(startPos.x+parentTrans.rect.width, startPos.y, 0);
+        topScreenBound = new Vector3(startPos.x, startPos.y+parentTrans.rect.height, 0);
+        bottomScreenBound = new Vector3(startPos.x, startPos.y-parentTrans.rect.height, 0);
     }
 
     private void OnEnable() {
@@ -36,9 +38,13 @@ public class Wipe : UITween
         LeanTween.cancel(gameObject);
         rectTransform.position = GetHidingPosition();
         Vector3 hidingPos = GetHidingPosition();
-        LeanTween.value(gameObject, 0,1, leanTime).setDelay(delay).setEase(easeType).setOnUpdate((float value)=>{
-            rectTransform.position = Vector3.LerpUnclamped(hidingPos, startPos, value);
-        }).setIgnoreTimeScale(true);
+        LeanTween.moveY(gameObject, startPos.y, leanTime).setDelay(delay).setEase(easeType).setIgnoreTimeScale(true);
+    }
+    override public void Show(Action action){
+        LeanTween.cancel(gameObject);
+        rectTransform.position = GetHidingPosition();
+        Vector3 hidingPos = GetHidingPosition();
+        LeanTween.moveY(gameObject, startPos.y, leanTime).setDelay(delay).setEase(easeType).setIgnoreTimeScale(true).setOnComplete(action);
     }
     override public void Hide(){
         LeanTween.cancel(gameObject);
@@ -47,6 +53,15 @@ public class Wipe : UITween
         LeanTween.value(gameObject, 1,0, leanTime).setDelay(delay).setEase(easeType).setOnUpdate((float value)=>{
             rectTransform.position = Vector3.LerpUnclamped(hidingPos, startPos, value);
         }).setIgnoreTimeScale(true);
+    }
+    public override void Hide(Action action)
+    {
+        LeanTween.cancel(gameObject);
+        rectTransform.position = startPos;
+        Vector3 hidingPos = GetHidingPosition();
+        LeanTween.value(gameObject, 1,0, leanTime).setDelay(delay).setEase(easeType).setOnUpdate((float value)=>{
+            rectTransform.position = Vector3.LerpUnclamped(hidingPos, startPos, value);
+        }).setIgnoreTimeScale(true).setOnComplete(action.Invoke);
     }
     Vector3 GetHidingPosition(){
         switch(direction){

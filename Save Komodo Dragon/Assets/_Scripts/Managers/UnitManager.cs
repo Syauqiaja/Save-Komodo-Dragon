@@ -74,7 +74,7 @@ public class UnitManager : StaticInstance<UnitManager>
         pickableBase.transform.position = pos;
     }
     public void SpawnTextDamage(int damage, Vector3 pos){
-        DamageText damageText = ObjectPooler.Instance.GetParticle(ParticleType.DamageText);
+        DamageText damageText = ObjectPooler.Instance.GetDamageText();
         damageText.gameObject.SetActive(true);
         damageText.textMesh.text = damage.ToString();
         damageText._t.position = pos;

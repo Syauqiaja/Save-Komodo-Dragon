@@ -356,7 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7578034780397591598}
   - component: {fileID: 6565730707800298535}
-  - component: {fileID: 6439938486079362596}
+  - component: {fileID: 3940545247039521745}
   m_Layer: 0
   m_Name: Radius Detector
   m_TagString: Detector
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490af2fa0691cee46bf94d464bd45611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &6439938486079362596
-CircleCollider2D:
+--- !u!61 &3940545247039521745
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -405,8 +405,18 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Radius: 2.86
+  m_Size: {x: 5.53, y: 10.43}
+  m_EdgeRadius: 0
 --- !u!1 &7947556287485276383
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +682,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   facingDirection: {x: 0, y: 0, z: 0}
   enemyFront: []
+  enemyNear: []
 --- !u!50 &9044135233518933522
 Rigidbody2D:
   serializedVersion: 4

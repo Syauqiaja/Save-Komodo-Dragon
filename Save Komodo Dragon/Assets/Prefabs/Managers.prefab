@@ -112,12 +112,12 @@ MonoBehaviour:
     poolType: 1
   - prefab: {fileID: 4403854460918952585, guid: 6e878c47fda06394ba769b45712ae8b5, type: 3}
     count: 20
-    poolType: 3
+    poolType: 4
   - prefab: {fileID: 3723527135163732998, guid: b3ec2a1660b902e46820b76e27d60dd6, type: 3}
     count: 10
     poolType: 0
   - prefab: {fileID: 7565919328645061821, guid: cd6e259dd14aae14d85cc01f86b0a13d, type: 3}
-    count: 5
+    count: 20
     poolType: 0
   - prefab: {fileID: 6548705162577623279, guid: 3c3fa9a72f7fff14b95f08309568e0ef, type: 3}
     count: 100
@@ -126,8 +126,26 @@ MonoBehaviour:
     count: 5
     poolType: 2
   - prefab: {fileID: 4648319638678701052, guid: 9978040227b4d334a8e0a6ba6b1ee3a0, type: 3}
-    count: 3
+    count: 2
     poolType: 2
+  - prefab: {fileID: 4692145224697501275, guid: 896814409a5300f40b2524476c29c966, type: 3}
+    count: 2
+    poolType: 2
+  - prefab: {fileID: 4991418104102107313, guid: 0eb11f3474dafe8469bc99146ae81a77, type: 3}
+    count: 4
+    poolType: 2
+  - prefab: {fileID: 1236158975366586118, guid: 537858e571ad192439d2af2435787d3c, type: 3}
+    count: 2
+    poolType: 2
+  - prefab: {fileID: 4991418104102107313, guid: 00ec7c4a3419ee648a98db011a18b0eb, type: 3}
+    count: 2
+    poolType: 2
+  - prefab: {fileID: 815230176334011889, guid: e3e79a2108996ab4a8aadfd3d6d79f83, type: 3}
+    count: 7
+    poolType: 0
+  - prefab: {fileID: 531098647634399186, guid: 4c07f9d3984337947bfe1b96e170cf31, type: 3}
+    count: 7
+    poolType: 3
 --- !u!1 &3331063891519725970
 GameObject:
   m_ObjectHideFlags: 0

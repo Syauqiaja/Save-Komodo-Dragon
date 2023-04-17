@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class UITween : MonoBehaviour
 {
@@ -19,9 +20,11 @@ public class UITween : MonoBehaviour
         _d2 = delay;
         Show();
     }
+    public virtual void Show(Action action){}
     public virtual void Hide(){}
     public virtual void Hide(float delay){
         _d2 = delay;
         Hide();
     }
+    public virtual void Hide(Action action){}
 }
