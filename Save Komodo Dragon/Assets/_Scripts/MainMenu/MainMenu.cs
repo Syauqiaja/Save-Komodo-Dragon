@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
     public void StartGame(){
+        dataHolder.Energy -= 5;
         SceneLoader.Instance.LoadLevel(ResourceSystem.Instance.GetMap(dataHolder.SelectedMap));
     }
 }

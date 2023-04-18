@@ -13,6 +13,7 @@ public class WaveHandler : MonoBehaviour
     protected void Awake() {
         spawnArea = GetComponent<SpawnArea>();
         GameManager.OnAfterStateChanged += ChangeWave;
+        GameManager.OnBeforeStateChanged += DoBeforeState;
     }
     private void Start(){
         bossPlace = Instantiate(bossPlace);
@@ -20,6 +21,15 @@ public class WaveHandler : MonoBehaviour
     }
     private void OnDestroy() {
         GameManager.OnAfterStateChanged -= ChangeWave;
+        GameManager.OnBeforeStateChanged -= DoBeforeState;
+    }
+    private void DoBeforeState(GameState state){
+        switch(state){
+            case GameState.BossPhase:
+                BossPhase phase = waveData[currentWave].bossPhase;
+                UnitManager.Instance.currentBoss = phase.scriptableBoss;
+            break;
+        }
     }
     private void ChangeWave(GameState state){
         switch(state){
@@ -63,9 +73,9 @@ public class WaveHandler : MonoBehaviour
     }
     private IEnumerator BossPhase(){
         yield return new WaitForSeconds(5f); //wait for boss danger text
+        BossPhase phase = waveData[currentWave].bossPhase;
 
         UnitManager.Instance.KillEnemies();
-        BossPhase phase = waveData[currentWave].bossPhase;
         if(bossBound == null) bossBound = Instantiate(phase.Bound);
         bossBound.transform.position = spawnArea.GetCenter();
         bossBound.gameObject.SetActive(true);
@@ -74,7 +84,7 @@ public class WaveHandler : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
-        UnitManager.Instance.TrySpawnEnemy(phase.bossPrefab, bossPlace.transform.position);
+        UnitManager.Instance.TrySpawnEnemy(phase.scriptableBoss, bossPlace.transform.position);
         bossPlace.SetActive(false);
     }
 

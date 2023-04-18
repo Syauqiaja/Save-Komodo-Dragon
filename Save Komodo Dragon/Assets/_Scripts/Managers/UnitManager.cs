@@ -19,6 +19,7 @@ public class UnitManager : StaticInstance<UnitManager>
     public int diamondSpawnCount = 5;
     public float diamondSpreadRadius = 20f;
     [HideInInspector] public HeroUnitBase heroUnit;
+    [HideInInspector] public ScriptableBoss currentBoss;
 
     public void SpawnHero(){
         basicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
@@ -54,10 +55,11 @@ public class UnitManager : StaticInstance<UnitManager>
         enemyUnit.SetProperties(scriptableEnemy.inGameSprite, scriptableEnemy.hitDamage, scriptableEnemy.pickableType);
         enemyUnit.transform.position = position;
     }
-    public void TrySpawnEnemy(EnemyUnitBase enemyUnitBase, Vector3 position){
-        EnemyUnitBase enemyUnit = Instantiate(enemyUnitBase, position, Quaternion.identity);
-        if(!activeEnemyDict.ContainsKey(enemyUnitBase.enemyType))
-            activeEnemyDict.Add(enemyUnitBase.enemyType, new List<EnemyUnitBase>());
+    public void TrySpawnEnemy(ScriptableBoss scriptableBoss, Vector3 position){
+
+        EnemyUnitBase enemyUnit = Instantiate(scriptableBoss.prefab, position, Quaternion.identity);
+        if(!activeEnemyDict.ContainsKey(enemyUnit.enemyType))
+            activeEnemyDict.Add(enemyUnit.enemyType, new List<EnemyUnitBase>());
         activeEnemyDict[enemyUnit.enemyType].Add(enemyUnit);  
     }
 

@@ -8,6 +8,8 @@ public class EnemyUnitBase : UnitBase, IHeroDamager
     public int hitDamage {get; protected set;}
     public EnemyType enemyType;
     public PickableType pickableType {get; private set;}
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator animator;
     protected Transform _t;
     protected Rigidbody2D _r;
     private Vector3 moveDirection;
@@ -34,7 +36,7 @@ public class EnemyUnitBase : UnitBase, IHeroDamager
         _t.localScale = new Vector3(Mathf.Sign(moveDirection.x),1,1);
     }
     public void SetProperties(Sprite sprite, int hitDamage, PickableType pickableType){
-        GetComponent<SpriteRenderer>().sprite = sprite;
+        spriteRenderer.sprite = sprite;
         this.hitDamage = hitDamage;
         this.pickableType = pickableType;
     }
@@ -51,6 +53,7 @@ public class EnemyUnitBase : UnitBase, IHeroDamager
     {
         UnitManager.Instance.SpawnTextDamage((int) hitValue, _t.position);
         base.Damaged(hitValue);
+        animator.SetTrigger("Damaged");
         _r.AddForce(-moveDirection, ForceMode2D.Impulse);
     }
 

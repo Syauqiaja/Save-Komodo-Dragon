@@ -30,6 +30,6 @@ public struct Phase{
 
 [System.Serializable]
 public struct BossPhase{
-    public EnemyUnitBase bossPrefab;
+    public ScriptableBoss scriptableBoss;
     public GameObject Bound;
 }

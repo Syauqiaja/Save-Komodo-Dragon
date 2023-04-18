@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   phases:
   - delay: 0
-    duration: 5
+    duration: 3
     rate: 0.7
     state: 3
     enemyPair:
@@ -25,5 +25,5 @@ MonoBehaviour:
       countMax: 1
       spawnOnce: 1
   bossPhase:
-    bossPrefab: {fileID: 8116792842879039483, guid: 080cabcd90024c247b497632d63cfce2, type: 3}
+    scriptableBoss: {fileID: 11400000, guid: b392b1b1fc40bea4da603d0a1c45bd01, type: 2}
     Bound: {fileID: 2983619297236352167, guid: 55eeffb93ed3cb04986ef5a502b50fc2, type: 3}

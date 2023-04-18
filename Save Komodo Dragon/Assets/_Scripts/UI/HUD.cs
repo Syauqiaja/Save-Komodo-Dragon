@@ -43,6 +43,9 @@ public class HUD : MonoBehaviour
 
     [Header("On Lose")]
     public CanvasGroup LosePanel;
+    public GameObject normalLosePanel;
+    public GameObject bossLosePanel;
+    public Image bossLoseImage;
     public TextMeshProUGUI currentTimerText;
     public TextMeshProUGUI bestTimeText;
 
@@ -67,6 +70,7 @@ public class HUD : MonoBehaviour
         GameManager.OnBeforeStateChanged -= BeforeActionHandler;
     }
     public void Restart(){
+        dataHolder.Energy -= 5;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
     }
     void BeforeActionHandler(GameState state){
@@ -87,6 +91,14 @@ public class HUD : MonoBehaviour
         bestTimeText.text = "Best Time : "+bestTime/60+"m "+bestTime%60+"s";
         currentTimerText.text = timer/60+"m "+timer%60+"s";
         LosePanel.gameObject.SetActive(true);
+        if(GameManager.Instance.State == GameState.BossPhase){
+            normalLosePanel.SetActive(false);
+            bossLosePanel.SetActive(true);
+            bossLoseImage.sprite = UnitManager.Instance.currentBoss.menuSprite;
+        }else{
+            bossLosePanel.SetActive(false);
+            normalLosePanel.SetActive(true);
+        }
     }
     public void OnWin(){
         onWinGift.SetGold(GameManager.Instance.goldEarned);
