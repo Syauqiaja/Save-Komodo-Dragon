@@ -21,6 +21,7 @@ public class UnitManager : StaticInstance<UnitManager>
     [HideInInspector] public HeroUnitBase heroUnit;
 
     public void SpawnHero(){
+        basicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         ScriptableHero heroSelected = ResourceSystem.Instance.GetHero(dataHolder.GetSelectedHero().heroType);
 
         Debug.Log(heroSelected.name);
@@ -30,7 +31,6 @@ public class UnitManager : StaticInstance<UnitManager>
         heroUnit.SetStats(heroSelected.BaseStats);
         heroUnit.SetSprite(heroSelected.GetHeroSpriteAtLevel(1));
         virtualCamera.Follow = heroUnit.transform;
-        basicMultiChannelPerlin = virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
 
         GameManager.Instance.AddEquipment(dataHolder.SelectedSkill);
     }
@@ -96,6 +96,14 @@ public class UnitManager : StaticInstance<UnitManager>
         LeanTween.value(gameObject, intensity, 0f, time).setOnUpdate((float value)=>{
             basicMultiChannelPerlin.m_AmplitudeGain = value;
         });
+    }
+    public void Shake(float intensity, float time, float timemargin){
+        LeanTween.value(gameObject, 0f, intensity, timemargin).setOnUpdate((float value)=>{
+            basicMultiChannelPerlin.m_AmplitudeGain = value;
+        });
+        LeanTween.value(gameObject, intensity, 0f, timemargin).setOnUpdate((float value)=>{
+            basicMultiChannelPerlin.m_AmplitudeGain = value;
+        }).setDelay(time+timemargin);
     }
     public void EndShake(){
         LeanTween.value(gameObject, basicMultiChannelPerlin.m_AmplitudeGain, 0f, _timer).setOnUpdate((float value)=>{

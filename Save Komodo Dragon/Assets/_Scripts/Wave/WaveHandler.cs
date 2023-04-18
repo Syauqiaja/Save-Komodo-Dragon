@@ -62,7 +62,7 @@ public class WaveHandler : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.BossPhase);
     }
     private IEnumerator BossPhase(){
-        yield return new WaitForSeconds(2.5f); //wait for boss danger text
+        yield return new WaitForSeconds(5f); //wait for boss danger text
 
         UnitManager.Instance.KillEnemies();
         BossPhase phase = waveData[currentWave].bossPhase;
