@@ -689,7 +689,7 @@ MonoBehaviour:
   m_NoiseProfile: {fileID: 11400000, guid: 7c9019e2372b10848ac63c2d2528dc1b, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
   m_AmplitudeGain: 0
-  m_FrequencyGain: 2
+  m_FrequencyGain: 1
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1001 &2218017182884762027
 PrefabInstance:
@@ -806,6 +806,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2218017182805678027, guid: eb428fe8de62b564f8b23d770719c7b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2218017183508621606, guid: eb428fe8de62b564f8b23d770719c7b3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -828,14 +832,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2218017183508621606, guid: eb428fe8de62b564f8b23d770719c7b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2218017183588763472, guid: eb428fe8de62b564f8b23d770719c7b3, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2218017183588763474, guid: eb428fe8de62b564f8b23d770719c7b3, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

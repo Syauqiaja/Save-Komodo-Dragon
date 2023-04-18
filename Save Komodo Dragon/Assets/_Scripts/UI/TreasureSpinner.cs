@@ -23,8 +23,8 @@ public class TreasureSpinner : MonoBehaviour
     private void Awake() {
         for (int i = 0; i < 16; i++)
         {
-            frame[i] = itemsParent.GetChild(i).GetChild(1).gameObject;
-            itemImages[i] = itemsParent.GetChild(i).GetChild(0).GetComponent<Image>();
+            frame[i] = itemsParent.GetChild(i).GetChild(0).gameObject;
+            itemImages[i] = itemsParent.GetChild(i).GetChild(1).GetComponent<Image>();
         }
         panelTween.afterShow += StartSpinning;
     }
